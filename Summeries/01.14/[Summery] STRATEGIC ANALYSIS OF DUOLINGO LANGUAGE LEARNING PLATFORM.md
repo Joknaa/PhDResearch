@@ -3,20 +3,16 @@
 
 ---
 
+<hr>
+<hr>
 <h1 id="summery-of-strategic-analysis-of-duolingo-language-learning-platform">
-
-# Summery of STRATEGIC ANALYSIS OF DUOLINGO LANGUAGE LEARNING PLATFORM</h1>
+</h1><h1 id="summery-of-strategic-analysis-of-duolingo-language-learning-platformh1">Summery of STRATEGIC ANALYSIS OF DUOLINGO LANGUAGE LEARNING PLATFORM</h1>
 <h2 id="research-methodology">
-
-
-## 1. Research Methodology</h2>
+</h2><h2 id="research-methodologyh2">1. Research Methodology</h2>
 <p><img src="
 ![Figure 1](https://live.staticflickr.com/65535/52627041949_eb2bdae7df_o.png" alt="Figure 1"></p>
 <h2 id="characteristic-of-duolingo-company">)
-
-
-
-## 2. Characteristic of Duolingo company</h2>
+</h2><h2 id="characteristic-of-duolingo-companyh2">2. Characteristic of Duolingo company</h2>
 <ul>
 <li>
 - Was founded in 2012 by Carnegie Mellon University computer science professor Luis von Ahn and his PhD student Severin Hacker.</li>
@@ -26,8 +22,7 @@
 - Has 3 types of accounts: free, Duolingo Plus, and Duolingo for Schools.</li>
 </ul>
 <h3 id="financial-resources">
-
-### 2.1. Financial Resources:</h3>
+</h3><h3 id="financial-resourcesh3">2.1. Financial Resources:</h3>
 <ul>
 <li>
 - Digital language learning generates $6 billion in revenue, and that number is projected to rise to 8.7 billion USD by 2025 (Adams, 2019)</li>
@@ -43,8 +38,7 @@
 - While the gross margin since 2019 exceeds 70%, currently the company is not making a profit. In 2021 this was largely due to the costs associated with the IPO (Duolingo, 2021).</li>
 </ul>
 <h3 id="duolingo’s-competition">
-
-### 2.2. Duolingo’s competition:</h3>
+</h3><h3 id="duolingo’s-competitionh3">2.2. Duolingo’s competition:</h3>
 <ul>
 <li>
 - In terms of app downloads, Duolingo clearly outperforms its competitors (see Figure 4).<br>
@@ -57,11 +51,11 @@
 <h3 id="strengths">3.1. Strengths:</h3>
 <ul>
 <li><strong>)
-
-
-## 3. SWOT analysis of Duolingo language learning platform
-### 3.1. Strengths:
-- **Selection of languages</strong>**: As of Feb 2022, Duolingo offers 40 Languages like :
+</strong></li></ul><h2 id="swot-analysis-of-duolingo-language-learning-platform">3. SWOT analysis of Duolingo language learning platform</h2>
+<h3 id="strengths">3.1. Strengths:</h3>
+<ul>
+<li><strong>Selection of languages</strong>: As of Feb 2022, Duolingo offers 40 Languages like :</li>
+</ul>
 <ul>
 <li>    - Popular foreign languages: English, French, …</li>
 <li>...
@@ -69,7 +63,7 @@
 <li>...
     - Fictional languages: High Valyrian from Game of Thrones, and Klingon from Star Trek.</li>
 </ul>
-</li>
+
 <li><strong>
 - **Gamification</strong>**: According to L. von Ahn, Duolingo user retention level is comparable to that of games rather than learning platforms (Adams, 2019), Because as the users learn they :
 <ul>
@@ -123,13 +117,14 @@
     - As of February 2022, more than 3,000 universities, including Yale, Cornell, and Columbia, accept DET as a substitute for TOEFL (Duolingo, n.d.-c).</li>
 </ul>
 </li>
-</ul>
+
 <h3 id="weaknesses">3.2 Weaknesses:</h3>
 <ul>
 <li><strong>
-
-### 3.2 Weaknesses:
-- **Technical defects</strong>**: Software errors are common:
+</strong></li></ul><h3 id="weaknesses">3.2 Weaknesses:</h3>
+<ul>
+<li><strong>Technical defects</strong>: Software errors are common:</li>
+</ul>
 <ul>
 <li>    - The voice recognition algorithm is rather inefficient.</li>
 <li>
@@ -137,7 +132,7 @@
 <li>
     - Technical issues are usually resolved by restarting or reinstalling the app.</li>
 </ul>
-</li>
+
 <li><strong>
 - **Beginner / intermediate CEFR level content only</strong>:
 <ul>
@@ -170,13 +165,14 @@
 - **Frivolous image</strong>**: Since they use a different to learning than other platforms, Diolingo is sometimes criticized and ridiculed for its approach.</li>
 <li><strong> 
 - **User dishonesty</strong>**: Some users cheat to get higher levels, this demotivates other learners, and shows the platform primarily as a game to be won at all cost, rather than a learning platform.</li>
-</ul>
+
 <h3 id="opportunities">3.3 Opportunities:</h3>
 <ul>
 <li><strong>
-
-### 3.3 Opportunities:
-- **Growing education technology and language learning industry</strong>**: Duolingo revenue accounts for 2–3% of the language learning revenue. As the sector grows, they have to add more features and content to retain existing users and aquire others.</li>
+</strong></li></ul><h3 id="opportunities">3.3 Opportunities:</h3>
+<ul>
+<li><strong>Growing education technology and language learning industry</strong>: Duolingo revenue accounts for 2–3% of the language learning revenue. As the sector grows, they have to add more features and content to retain existing users and aquire others.</li>
+</ul>
 <li><strong>
 - **Certified language tests</strong>**: Diolingo English test is an alternative to TOEFL and IELTS. It is possible to do the same for the Spanish DELE, French DELF/DALF, …</li>
 <li><strong>...
@@ -189,9 +185,5 @@
 - **Business customers</strong>**: As an employee incentive, some corporations bought subscriptions to tutoring platforms during the Covid pandemic. They can also be offered a corporate Duolingo license.</li>
 <li><strong>
 - **Remote learning and teaching</strong>**: The market for educational technologies is growing, so does the popularity of teleworking and remote learning, especialy during and after the COVID-19 pandemic. Educational institutions are looking for more effective ways of teaching, companies are looking for ways to train and involve employees.</li>
-</ul>
 
 
-<!--stackedit_data:
-eyJoaXN0b3J5IjpbODA0NzM3NjIwXX0=
--->
