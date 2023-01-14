@@ -1,0 +1,979 @@
+Virtual Reality https://doi.org/10.1007/s10055-022-00704-9
+ORIGINAL ARTICLE
+
+Immersive virtual reality and passive haptic interfaces to improve procedural learning in a formal training course for first responders
+Davide Calandra1  · Federico De Lorenzis1 · Alberto Cannavò1 · Fabrizio Lamberti1
+Received: 1 November 2021 / Accepted: 17 September 2022 © The Author(s) 2022
+Abstract One key aspect for the safety and success of first responders’ operations is the compliance, during the intervention, with all the safety procedures and prescribed behaviors. Although real-world simulation exercises are considered as the best way to verify if operators are ready to handle emergency situations, they are not always a viable approach. Firefighting courses, for example, do not usually include this kind of activities, due to the numerous hazards related to deploying controlled fires for the simulation. However, traditional training approaches based on class lessons and multimedia learning material may not be particularly effective for teaching practical skills and procedural behaviors. In this work, the use of a Virtual Reality Training Simulation (VRTS) combined with passive haptic interfaces and a real-time fire simulation logic is investigated as a complement to a traditional video-based training approach used in the context of forest firefighting. The teaching of safety concepts and correct use of individual firefighting tools was selected as a use case, and a user study involving 45 trainees was carried out in the context of an existing training course. One third of the trainees attended the traditional video-based lessons of the course, whereas the remaining ones also took part to a practice training session, half of them with the devised VRTS, the others in the real world. Experimental results showed that the additional use of the devised VRTS improved the trainees’ procedural learning, as well as their motivation and perceived quality of the overall learning experience.
+Keywords  Virtual reality · Passive haptics · Video-based training · First responders · Forest firefighting · Fire simulation
+
+1 Introduction
+In the emergency response domain, having a deep knowledge of which actions have to be performed and how is fundamental for the success and safety of first responders’ activities (de Carvalho et al. 2018). Thus, it is essential to have suitable methods for practicing these abilities and to recognize possible gaps between prescribed and actual behaviors. Unfortunately, monitoring first responders’ performance in
+* Davide Calandra davide.calandra@polito.it
+Federico De Lorenzis federico.delorenzis@polito.it
+Alberto Cannavò alberto.cannavo@polito.it
+Fabrizio Lamberti fabrizio.lamberti@polito.it
+1 Dipartimento di Automatica e Informatica, Politecnico di Torino, Corso Duca degli Abruzzi, 24, 10129 Turin, TO, Italy
+
+emergency situations is very difficult and often impractical. Hence, a method that is generally adopted to verify if operators are ready to deal with emergencies is through simulation exercises (de Carvalho et al. 2018).
+For the purpose of developing, e.g., firefighting skills, live-fire training is one of the most effective exercises, as it allows operators to be trained under quite realistic conditions in a controlled and supervised setting (Engelbrecht et al. 2019). Unfortunately, this training methodology is not always applicable and is still prone to a number of possible hazards (Engelbrecht et al. 2019); hence, it is rarely included in standard firefighting courses. Notwithstanding, traditional training approaches based solely on text and multimedia contents may not be completely effective considering both knowledge acquisition and retention (Feng et al. 2018). If trainees are not requested to put in practice the learned contents, they may not receive a proper feedback on their individual behavior (Chittaro et al. 2014); furthermore, if trainees are not emotionally engaged in the training experience, the efficacy of the learning process may be reduced (Gwynne et al. 2019). These limitations are particularly critical when
+
+1 3 Vol.:(0123456789)
+
+Virtual Reality
+
+Table 1  List of acronyms (in alphabetical order) and corresponding definitions
+
+Acronym
+
+Definition
+
+ATT​ BST CONF FST HMD IMMS
+ISA ISE IST NPC PPE R REL SAT SUS V V+R V+VR VR VRTS
+
+Attention (IMMS Keller (2010)) Behavioral Skill Training Confidence (IMMS Keller (2010)) Fire Safety Training Head-Mounted Display Instructional Materials Motivation
+Survey Keller (2010) In Situ Assessment In Situ Exam In Situ Training Non-Playable Character Personal Protective Equipment Real-world Relevance (IMMS Keller (2010)) Satisfaction (IMMS Keller (2010)) System Usability Scale Brooke (1996) Video-only Video + Real-world practice Video + VR Virtual Reality Virtual Reality Training Simulation
+
+teaching procedural contents, which have a fundamental role in firefighting and other first responders’ tasks.
+Both the issues mentioned above could be addressed by leveraging the capabilities of Virtual Reality (VR) technology (the VR acronym, as well as the other acronyms used in the present paper, are listed in Table 1). In the last decade, VR has found increasingly wider application in the fields of training and education (Jensen and Konradsen 2018; Checa and Bustillo 2020; Pellas et al. 2020). In particular, it proved to be a useful tool for creating effective emergency training experiences (Feng et al. 2018; Andrade et al. 2018; Pedram et al. 2020; Lamberti et al. 2021). In the context of procedural training, VR was demonstrated to be more effective that both printed (Buttussi and Chittaro 2021) and video-based training material (Lovreglio et al. 2021) in core aspects such as knowledge gain and retention, as well as usability, trainees’ confidence and self-efficacy.
+VR training scenarios involving fire have been deeply investigated in the literature (Fathima et al. 2019; Morélot et al. 2021; Çakiroğlu and Gökoğlu 2019). However, to the best of the authors’ knowledge, they have not been studied in the context of formal firefighting training courses.
+One of the difficulties faced in the design of VR-based training experiences for first responders is represented by the need to reproduce frequent operators’ interactions with specific equipment in the virtual environment. The simplest way
+
+to handle this need is to create digital replicas of the required tools, and let the users manage them using the hand controllers that are commonly bundled with consumer VR systems (Lamberti et al. 2021; Pratticò et al. 2021). Although these virtual reconstructions might reach particularly high levels of visual realism, they lack physical attributes of the original equipment, which may be problematic for an accurate simulation of the real-world counterparts (Suhail et al. 2019). A way to cope with this issue and enhance the simulation of these practical operations is to use so-called passive haptic interfaces or, simply, passive haptics (Joyce and Robinson 2017). These interfaces are (typically low-fidelity) physical prototypes that can be combined with the visual information delivered by the virtual environment (Joyce and Robinson 2017) to provide the users with an improved feedback through their weight, shape and other physical attributes (Calandra et al. 2019).
+The aim of the present work is to explore the effectiveness of VR technology and passive haptic interfaces when applied in the context of a formal training course for first responders. To this purpose, the domain of forest firefighting was selected and a VR Training Simulation (VRTS) was developed and integrated in the standard course of the Italian forest firefighting unit of the Piedmont Region, Italy1. The VRTS supports procedural training on the use of three individual firefighting tools (shovel, rake, and beater), with a particular focus on safety aspects. For each tool, a physical replica was built and used in place of VR controllers to let the trainees interact with the virtual environment. A believable, real-time fire spreading simulation logic was developed, whose behavior can be influenced by operating the mentioned tools.
+The VR experience, which was designed as a practice session to be experienced after having attended the video-based lesson of the standard course on the topic, was compared with the video-based training alone by means of a user study. Since the experience with the VRTS implies a prior exposure to (and additional time with) the physical tools with respect to the standard training, a further training approach was included in the comparison. This approach consisted in the standard course followed by a real-world practical training with the tools in a mock-up, low-fidelity setting; in particular, this latter training was designed in collaboration with the mentioned firefighting body as a simulation of a live-fire exercise, but without fire.
+According to Lukosch et al. (2019), the fidelity in interactive experiences like, e.g., games, can be categorized in four dimensions:
+1  https://​www.​corpo​aibpi​emonte.​it/.
+
+1 3
+
+Virtual Reality
+
+• Physical fidelity the extent to which the simulation emulates the physical properties of the real-world scenario;
+• Functional fidelity the degree to which the simulated devices and tools behave as the real counterparts in the task;
+• Psychological fidelity how much the simulation can evoke emotional states close to the real experience;
+• Social fidelity how much the simulation can imitate social interactions.
+
+body for the Piedmont Region Civil Protection Unit3. The design of the VRTS fell within the scope of the RISK FOR4 sub-project, which aims at improving the training of the subjects involved in the disaster management of the territory between Italy and France. Training was carried out in the frame of the RISK ACT​5 sub-project, whose goal is to apply the training tools developed in RISK FOR to real-world scenarios like the one considered in this work.
+
+Based on these definitions, it can be assumed that the two practical training experiences mentioned above are characterized by a comparable functional fidelity, since the real firefighting tools (or their high-fidelity replicas) are employed in both of them. The VR training, however, may provide higher levels of physical and psychological fidelity with respect to real-world training as, with the latter, it is not possible to simulate live-fire conditions without exposing the trainees to potentially life-threatening situations. Finally, both the experiences are designed as individual activities, and the social fidelity dimension is not relevant. Thus, the real-world practical training will be referred to as low-fidelity when compared to both real-world, live-fire and VRTS experiences.
+The comparison of the three conditions considered both subjective and objective measures. The subjective measures, gathered using standard questionnaires, investigated dimensions related to trainees’ motivation (attention, relevance, confidence and satisfaction), and to attractiveness and hedonic quality stimulation of the learning experience. The objective measures analyzed trainees’ performance with respect to both conceptual and procedural learning outcomes. Trainees were evaluated via a theoretical quiz session (after the training), as well as by means of the final, practice exam of the standard course. Finally, the usability of the VRTS was specifically evaluated using a dedicated questionnaire.
+The specific objective of the comparison was to study whether the devised VRTS actually introduces a realistic learning-by-doing component in the traditional course capable of helping the trainees to better understand and remember how to perform the considered tasks with respect to the video-based lesson alone or to the lesson combined with real-world practice (possibly improving also their motivation and learning experience).
+The design, development and experimental activities were performed in collaboration with the said forest firefighting unit in the context of the PITEM RISK2 project. In this project, Politecnico di Torino serves as implementing
+2  https://​www.​pitem-​risk.​eu.
+
+2 Background
+In the following, the research gaps considered in the design of the proposed system will be briefly described and the relevant literature reviewed.
+2.1 Research gaps
+The use of VR technology as a training tool for first responder operators has been widely studied both in past and recent literature (Louka and Balducelli 2001; St Julien and Shaw 2003; Lu et al. 2020; Haskins et al. 2020; Corelli et al. 2020; Pratticò et al. 2021). In particular, firefighting operations, which are specifically addressed by the present paper, have been frequently considered in previous work (Tate et al. 1997; Backlund et al. 2007; Wheeler et al. 2021).
+Several studies have been performed to compare VR training with real-word operations (Rose et al. 2000), as well as to assess the effectiveness of VR (Bliss et al. 1997). A SWOT (Strengths, Weaknesses, Opportunities, and Threats) analysis on the use of immersive VR in the mentioned field was carried out by Engelbrecht et al. (2019) As reported by the authors, VR can increase the safety of high-risk training and the trainees’ engagement, is characterized by high ecological validity and cost effectiveness, and also enables interesting features such as data recording, as well as complex and varied scenarios. VR also suffers from some weaknesses, such as the constrained fidelity of multi-user interactions, the general lack of validation of developed VRTSs from actual first responder bodies, and the still limited maturity of the technology (and the consequent technological barriers).
+Among the opportunities, the authors mentioned the system engineering progress. Current technological limitations may lead to inaccurate training experiences, but a lot of work has been done on the engineering of other simulation tools. For example, new fire propagation models
+3  https://​www.​regio​ne.​piemo​nte.​it/​web/​temi/​prote​zione-​civile-​difesa-​ suolo-​opere-​pubbl​iche. 4  https://​www.​pitem-​risk.​eu/​proge​tti/​risk-​for. 5  https://​www.​pitem-​risk.​eu/​proge​tti/​risk-​act.
+
+1 3
+
+Virtual Reality
+
+can consider aspects such as wind, flying embers, the use of fire extinguishing tools, and the presence of smoke. Although these advancements have not been exploited in VR yet, their progresses may have wide applicability in future VRTSs for firefighting.
+The transfer of findings from other domains could play a big role as well. VR has been investigated in a wide set of training contexts (e.g., military, medical, industrial, etc.), and findings coming from these fields might provide helpful indications valuable also for the considered domain. Firefighter training in VR could greatly benefit from the increase in physical fidelity, due to the continuous technological advancements in the sensory stimulation fields (e.g., visual, haptic, and the less investigated olfactory stimulation). In fact, most of the skills needed for firefighting heavily rely on different sensory inputs (e.g., smell of leaking gas or change in wind direction), and at the moment, it is very hard to reproduce a potential threat in a non-threatening scenario such as a VRTS. Finally, the authors listed among opportunities the increased resilience against adverse effects. Since experiencing a real emergency scenario may be a traumatic experience, mental hardiness is an advisable characteristic to prevent adverse effects. The possibility to create realistic experiences which can be repeated several times makes VR a powerful tool to increase mental preparedness of firefighting trainees.
+Lastly, the analysis identified also some threats. One of them is the uncertainty of skills transfer, since the increased complexity of using a VR system may undermine the effectiveness of the training experience, which may thus fail in reaching the level of transfer necessary to possibly replace traditional learning methods. Other threats could be related to the effects of habituation and engagement. Habituation may lead to a gradual desensitization to the stimuli coming from the VRTS, resulting in worse outcomes for the training and overconfidence in real-life scenarios. Engagement, ideally a positive aspect, may also pose some risks. The virtual experience may be enriched with elements designed to maximize the engagement of the trainees (e.g., rewards). However, the reality of firefighting may not always be that engaging. This mismatch could lead the trainees to mostly focus their efforts toward these additional elements, losing interest in completing the actual firefighting tasks. Finally, there could be the risk of a reduced overall net-effect of the training due to the potential overuse of VRTSs. VR cannot completely replace real-life training, but it should be only used as a supplementary addition to traditional training routines. Trainers, however, may be tempted to prefer VR over reallife training (e.g., live-fire exercises) due to the reduced costs and management efforts, and this overuse may lead to overall worse training outcomes.
+
+2.2 VR‑based emergency training
+Given the relevance of the field, as well as the amount of open issues and opportunities, it is not surprising that a large number of studies investigated this context proposing various VRTSs for the training of firefighters.
+Querrec et al. (2003) presented a multi-agent-based firemen training scenario. The tool, labeled SécuRéVi, was oriented to officers, and allowed them to manage and give orders to firefighting teams in the context of specific incidents that cannot be replicated in real-world training exercises, like a gas leakage from a factory or an explosion. A typical pedagogical scenario is also presented, to better clarify the roles of each actor (designer, teacher and learner).
+Cha et al. (2012) showed a VRTS integrated with a fire dynamics simulation used to simulate firefighting activities related to evacuation and rescue in a road tunnel. The paper proposed a series of data conversion techniques and a realtime processing framework to build a fire training simulation based on computational fluid dynamics data. Although the proposed framework was able to handle data coming from the fire dynamics simulation in real time, the simulation itself required high processing times. As a consequence, the considered firefighting activities did not include fire extinguishing or other operations that could modify the simulation of the physical phenomena.
+These limitations were partially addressed by Calandra et al. (2021), who developed a multi-role, multi-user, and multi-technology VR-based training simulator targeted to emergency operations. The scenario studied in the paper was a road tunnel fire inspired by true events occurred in the Frèjus tunnel and took advantage of a range of different technologies and techniques to maximize training deployability and effectiveness. It leveraged fire dynamics simulation data, though their use was limited to the realistic visualization of smoke. Fire simulation was driven by a non-physically accurate, yet plausible, spreading logic, which enabled a direct interaction with the fire in the execution of dynamic extinguishing operations.
+Çakiroğlu and Gökoğlu (2019) presented a VRTS to deliver basic fire safety training to a group of primary school students. The training was organized in several phases. In the VR-based Behavioral Skill Training (VR-BST) phase, the students were taught concepts related to a fire safety procedure by a virtual firefighter avatar inside a virtual environment. During the next phases, referred to as In Situ Training and Assessment in a VR-based Fire Safety Training setting (IST + ISA, VR-FST), the students were taken to different locations in another virtual environment, where they had to perform a number tasks concerning the fire safety procedure. First, the students had to put in practice the learned concepts (IST); afterward, their behavior was observed and evaluated (ISA). In the last phase, named In Situ Assessment in a
+
+1 3
+
+Virtual Reality
+
+Real-life setting (ISA, Real), a further evaluation was carried out in a real scenario represented by a controlled fire in a local fire department. The results of the experiments showed that the effectiveness of training significantly improved with the use of VR, and the majority of students could transfer the learned behavioral skills to the real experience.
+A comparison of immersive headworn VR (using a Head-Mounted Display, HMD), non-immersive handheld VR (using a smartphone), and traditional training material (in the particular case, a printed safety card) in the context of a procedural safety training was performed by Buttussi and Chittaro (2021). Door opening procedures in different aircrafts were specifically considered. The evaluation covered aspects such as performance, knowledge gain and retention, confidence, presence, and engagement. Immersive VR was judged as significantly more usable than printed material and significantly better in terms of presence when compared with the smartphone. The immersive setup was also found to be the best one in terms of trainees’ engagement and satisfaction.
+2.3 Passive haptics in emergency training
+Another key aspect of the work reported in the present paper is the use of passive haptics with the aim to improve the trainees’ experience and its outcome (Nahavandi et al. 2019; Seo et al. 2019). An example of use of these interfaces to simulate interactions with firefighting equipment was proposed by Suhail et al. (2019). The authors built a passive haptic interface using consumer VR hardware to simulate a firetruck pump panel for training purposes. The goal was to reduce the risks associated with real-life training on this equipment, without requiring complex and expensive pump simulators. The employed VR system was an HTC Vive HMD, which was coupled with a HTC Vive Tracker to spatially track the passive haptics in real time.
+Morélot et al. (2021) studied the impact of immersion and sense of presence on the performance of conceptual and procedural learning in VR for fire safety training. A CAVEbased VR environment integrated with dynamic fire and smoke evolution was used. Three full-size tracked replicas of as many kinds of extinguishers were employed as passive haptics to interact with the virtual scenario. This use of passive haptic interfaces in a CAVE-based VR system was viable since the considered experience did not require direct hand interaction with the virtual environment, as fire extinguishers are essentially ranged tools. The CAVE setup was compared with a non-immersive VR setting encompassing a desktop PC with mouse and keyboard. The evaluation methodology included a pre-test and a post-test on theoretical concepts, followed by a procedural post-test. The assessment for the post-test was performed through interviews between trainers and trainees, as well as using observations made by
+
+the authors during the execution of the learned procedure (which were also validated by trainers). Results showed that immersion significantly improved the procedural learning, but not the conceptual learning.
+2.4 Contributions
+The design, development and evaluation of the proposed VRTS were grounded on the literature review that has been summarized above. The goal was to tackle some of the weaknesses of the previous works, as well as to take advantage of the opportunities that have been identified for this kind of training tools (Engelbrecht et al. 2019).
+In order to cope with the frequent lack of validation (Engelbrecht et al. 2019), the VRTS was developed in collaboration with the Italian forest firefighting unit of the Piedmont Region, Italy. Since many previous works did not investigate the effects of the training on actual firefighting operators (Engelbrecht et al. 2019), the VTRS was evaluated in the context of an existing course oriented to beginner volunteers of the involved first responder body.
+To mitigate the technology barrier (Engelbrecht et al. 2019) still associated with the use of immersive VR and reduce as much as possible the differences with real-world operations, a number of design choices were adopted. Some examples are the use of tracked replicas of the considered firefighting tools as passive haptic interfaces in place of the standard VR hand controllers, the choice of natural walking to move in the virtual environment (being it the most intuitive VR locomotion technique (Cannavò et al. 2021)), and the use of a wireless setup for the HMD. In this way, the additional mental workload related to the use of VR could be possibly reduced.
+The use of passive haptics also served the purpose of increasing the physical fidelity of the VR simulation with respect to the relatively low fidelity offered by consumer VR systems (Engelbrecht et al. 2019). This was a fundamental requirement for the considered case study, which builds on the use of handheld firefighting equipment. The floor of the physical space in which the VR experience takes place can be considered as part of the user interface, since most of the interactions with the virtual environment occur when the passive haptics touch the ground.
+In order to guarantee interactivity with the fire during the operation of the firefighting tools, it was decided to avoid physically accurate offline fire simulations. A less accurate, but real-time, tile-based two-dimensional spreading logic was instead implemented, inspired by the wildfire spreading model presented by Rothermel (1972). The modified version of this model is explained in detail in Sect. 3.
+Finally, regarding the uncertainty of the skills transfer from virtuality to reality (Engelbrecht et al. 2019), the experimental evaluation of the proposed VRTS was
+
+1 3
+
+Fig. 1  Original schedule of the Italian forest firefighting unit course
+
+Virtual Reality
+
+actually designed to provide clear measures regarding this core aspect. In fact, the aim of the experimental activity was to assess the effectiveness of adding the devised VRTS for the improvement of procedural skills pertaining a specific firefighting procedure. Thus, the VRTS was compared both against the traditional, video-based lessons of a standard firefighting course alone, as well as against the lessons combined with a real-world, low-fidelity training.
+The methodology adopted to integrate the use of the VRTS within the existing course was inspired to the training process proposed by Çakiroğlu and Gökoğlu (2019). Several modifications were introduced to make the additional training experiences fit the original course schedule.
+3 Existing forest firefighting course
+The goal of the present work is to evaluate the performance of a passive haptics-based VRTS for firefighter training in the context of a formal training course. To this purpose, a collaboration with a firefighting body was established, in order to design a training experience that could be easily integrated in one of their standard training courses. To minimize possible biases due to trainees’ prior knowledge in the field, it was decided to focus on a course oriented to operators which have yet to start their path as forest firefighters, i.e., the course for beginner volunteers.
+3.1 Course outlines
+The standard training delivered to beginner volunteers by the said body is organized as a two-day theoretical course made up of frontal lessons, mostly intended to teach procedural and safety concepts to first-time operators. Each
+
+lesson, largely based on video contents, is always followed by a quiz session, which is aimed to ensure the correct understanding of the tackled concepts before moving to the next topic. After completing the course, the trainees have to pass an examination including both a theoretical and a practical part in order to get the certification. In each course round, a maximum of 30 learners are involved. The course schedule is illustrated in Fig. 1.
+The course covers a wide range of topics, encompassing the assembly, operation and disassembly of water tanks, helicopter tactical deployment and extraction, basic life support and defibrillation, as well as the operation of firefighting modules and the use of individual equipment. The latter topic considers both ranged tools, such as the backpack pump and the blower, and hand tools, such as the shovel, the rake and the firefighting beater.
+The use of individual firefighting tools and, in particular, of hand tools, appeared to be the course subject that could benefit more of the use of VR and passive haptic interfaces; hence, it was selected as use case for this study. In fact, the organization of the current course can be particularly effective for learning theoretical concepts like, e.g., safety regulations, but may present some issues when it comes to teaching how to perform very practical activities, such as the assembly of compound equipment, the execution of first aid maneuvers, and the mentioned use of individual firefighting tools. The problem is that the type of trainees, who cannot be assumed to have prior knowledge of even basic concepts regarding the above subjects and, in particular, of associated safety risks, does not allow the arrangement of live-fire exercises. Nevertheless, they have to correctly perform the above activities in the practical part of the examination in order to obtain the certification.
+
+1 3
+
+Virtual Reality
+Fig. 2  The fictional forest scenario used in the VR Training Simulation
+
+It is worth remarking that, even though the course targets beginners, participants may be already part of a forest firefighting squad. They may also have some prior knowledge on the topic, linked, e.g., to some informal learning experiences like common forestry activities. However, the fact that they are attending the course implies that they do not have yet the qualification required to perform firefighting operations.
+3.2 Firefighting tools and safety concerns
+This work considers the use of three firefighting hand tools (shovel, rake, and beater) to deal with forest fires. These tools are employed directly on or near the fire front, exposing the operators to flames and high temperatures. For this reason, their use is only possible in presence of slow-burning fires with low flame activity affecting grass, foliage, or shrubs. The three tools have different characteristics, and the choice of using one tool over another depends on the actual goal (extinguishing an existing fire, or preventing a fire from spreading) and the type of terrain.
+The rake is a tool to remove fuel and stop the fire front progression; it can be employed both to remove foliage or cut shrubs. During transportation, a case is often used to cover the tines and protect the operators. The beater consists of a stick with strips made up of fireproof fabric at one end; it is used to suffocate the flames by hitting the fires. It is important to use the beater every two or three seconds and without excessive force. If the beater is used in the wrong way, there is the risk that oxygen is not removed and nearby flames are fueled even further. Lastly, the shovel is a versatile tool that can be used both to remove fuel (like a rake) or to suffocate the flames (like
+
+a beater). Unlike the beater, whose fabric strips are suitable for rocky soils, the shovel can be used to extinguish the fire on regular and earthy soils.
+Due to the proximity to combustion and high temperatures, the operators using these tools must wear adequate Personal Protective Equipment (PPE): firefighting suit, firefighting gloves, helmet with glasses or visor, and boots. Helmet, gloves, and boots also protect the operators from the sharp edges of the shovel and the rake.
+Since the considered tools are heavy and have exposed cutting parts, while working with them operators must follow a series of guidelines. In particular, they are required to:
+• keep the tool in their field of view; • maintain a safety distance of four meters from the other
+operators; • use the tool correctly, to extinguish or contain the fire,
+not to feed it; • maintain a correct posture during both transport and use
+(to avoid unnecessary fatigue).
+Shovels, rakes, and beaters are often used together with backpack pumps and blowers. The integration of the latter tools in the VRTS is currently in progress, and their suitability for VR-based training is being investigated (De Lorenzis et al. 2022).
+4 VR Training with passive haptic tools
+In the following, the virtual training scenario and the proposed VR-based system will be described.
+
+1 3
+
+Virtual Reality
+
+4.1 Training scenario
+
+4.2.2 Passive haptic interfaces
+
+A fictional scenario was created based on the indications provided by the Italian forest firefighting unit of the Piedmont Region. The simulation takes place in a forest clearing (Fig. 2), where the fire can affect only grass, foliage, and shrubs, and the height of the flames cannot exceed that of the operators’ waist. This choice was made since the objective of the VRTS was to train the operators on the use of the mentioned low-flame tools; the use of other tools, more efficient for higher flames, was not considered.
+In this scenario, a 10 m×10 m area where the trainee can freely move and interact with the virtual objects was defined (corresponding to the physical, tracked space). This area was designed as a flat ground without vegetation, on which digitally recreated foliage, grass, and shrubs can be “spawned” (which means created as game objects, in Unity). Inside this area, fuel can be generated randomly or by setting some parameters that define the fuel quantity, density and type at the beginning of the simulation. In this area, it is possible to spawn fires that will interact with the fuel. Outside this area, Non-Playable Characters (NPCs) take the roles of other operators, who fight nonspreading fires to contextualize the trainees’ actions and provide them with continuous, visual examples of correct behaviors.
+4.2 System development
+4.2.1 Materials
+The VRTS was meant as a complementary add-on to an existing forest firefighting course. It is based on a VR application, which was developed using the Unity 2019.4 game engine and the SteamVR framework, and designed to be used via an immersive HMD paired with passive haptic interfaces. In particular, the HTC Vive Pro VR system was used, together with several HTC Vive Trackers (2018) for tracking virtual firefighting tools in the virtual environment. The selected HMD features a display resolution of 1400× 1600 pixels per eye, spanning a horizontal 110◦ field of view with a 90 Hz refresh rate. Its native positional tracking leverages the infrared lasers emitted by the so-called base stations (built upon the Valve’s Lighthouse technology) which, combined with the HMD built-in sensors, enables a 6DOF outside-in tracking over an area of up to 10m×10m (using four base stations placed at the corners of the room, which was the configuration employed in this work). The standard HMD cables were removed, and an HTC Vive Wireless Adapter Kit was used to avoid or minimize encumbrance to the trainee, especially while handing the passive haptic interface.
+
+The passive haptic interfaces were realized by replicating the physical attributes of the considered real tools (Fig. 3). For the shovel, a snow shovel was modified by re-shaping the plastic blade; the same blade shape of the original firefighting tool was obtained, by also guaranteeing a higher level of safety during training thanks to the different material used (plastic instead of metal). For the rake, the replica was realized by removing the tines from a real rake, thus enabling a safer use in VR. Finally, for the beater, a real tool was employed with no changes.
+Each passive haptic interface was then provided with a mounting for an HTC Vive Tracker, a sensor which permits the real-time alignment (registration) of the physical object with the corresponding virtual counterpart in the virtual environment, similarly to what proposed by Suhail et al. (2019). An HTC Vive Tracker has a 270◦ field of view in which it can receive and reflect signals emitted from the HTC Vive base stations, collecting information on the position and rotation of the object it is attached to. The tracker weight is negligible compared to the tool weight.
+The standard hand controllers of the HTC Vive kit were discarded, in favor of a custom configuration which allowed the trainees to naturally manipulate the provided passive haptic interfaces. In particular, the trainees were provided with two standard firefighting gloves to recreate the feeling of the real PPE, which were tracked using two additional HTC Vive Trackers attached to the trainees’ wrists (Fig. 4). This solution did not allow to implement finger tracking, but this lack was not particularly relevant, since the trainees’ focus (and the assessment of their performance) was expected to be mostly on the handed prop. The positioning of all the tracking devices was chosen not to interfere with trainees’ actions.
+4.2.3 Fire simulation
+The fire simulation is driven by a non-physically accurate, yet plausible, cell-based spreading logic. This logic was designed with the contribution of experts from the Italian forest firefighting unit of the Piedmont Region. The models used to drive the fire life-cycle and the fire spreading are simplified versions of the well-known mathematical models by Rothermel (1972).
+At the beginning of the simulation, the fuel is spawned on the terrain. Three types of combustible material can be generated: foliage, grass/shrubs, or none. Depending on the spawning mode (random or controlled), the simulation area is filled by 3D meshes of the corresponding type or by empty spots (bare ground). If the fuel is spawned randomly, both its quantity and density are random values. If the spawning is controlled, it is possible to manually set the quantity and the
+
+1 3
+
+Virtual Reality
+Fig. 3  Firefighting tools: shovel, rake, and beater. Real tools (a–c), Passive haptic interfaces (d–f), and 3D models used in the VR experience (g–i)
+
+Fig. 4  Firefighting gloves tracked with HTC Vive Trackers during the operations (a), and close-up of a tracked glove (b)
+
+density for each type of fuel. At the end of the process, the terrain is covered by these meshes, spread around without a particular structure. To replicate the real composition of the forest terrain, the spawned meshes can overlap.
+
+Afterward, an invisible grid, also referred to as Terrain Grid, is superimposed to the terrain (Fig. 5). The number of cells (called tiles in the application) that make up the grid is variable; by default, it was chosen to set their size to 25cm×
+
+1 3
+
+Fig. 5  Visualization of the Terrain Grid when the size of a single tile is set to 25 cm×25 cm. The grid is superimposed to the terrain, where foliage and grass/ shrubs have been spawned
+
+Virtual Reality
+
+Fig. 6  Effect of the different
+tools on the scenario: the trainee uses the shovel (a) and the rake (b) to remove the fuel and stop
+the fire spreading; the trainee uses the beater (c) on the flames
+to remove oxygen and suffocate
+the fire
+
+25cm. For each tile, five rays are cast toward the terrain (one for each tile corner and one for the center), from a point located one meter above the tile, to get information about the corresponding fuel. Each ray collides either with bare ground, one mesh, or multiple, overlapping meshes. At the end of the ray-casting operation, each tile is characterized by the parameter maxFuel, whose value is derived from the fuel information. This parameter is initially set to zero and is then incremented by five if the fuel type hit is foliage, by 10 if it is grass/shrubs, by seven if the fuel type is both foliage and grass/shrubs, and by zero if it is an empty spot (Rothermel 1972). A tile with maxFuel greater than zero is Flammable, whereas tiles with maxFuel equal to zero are Non-flammable. Each tile is also associated with a pseudorandom humidity parameter that depends on the humidity value of the surrounding cells.
+After the setup phase, the simulation begins. In the devised tile-based spreading logic, each fire element is associated with a tile of the Terrain Grid matrix. It is possible to spawn either a single fire element on a random tile, or a fire line (including multiple fire elements) on one edge of the Terrain Grid. The fire simulation is controlled by two logic levels: a low level that manages each fire element life-cycle, and a high level that handles the spreading of all the fires.
+
+The fire element life-cycle passes through three states: Birth, Development, and Extinction. In the Birth state, the logic generates a fire element on a tile and sets it to OnFire. In the Development state, the fire periodically consumes the fuel associated with its tile: a value is subtracted to the remaining fuel (starting from maxFuel) every 0.2 s; the subtracted value decreases with the remaining fuel. These parameters also control particle systems used in the game engine for the visualization of the fire element. If the fuel reaches zero, the fire stops (Extinction state), and the tile is set to Burned and Non-flammable.
+The spreading of fire is handled by a higher level logic that manages all the fire elements together. This logic computes the damage caused by each non-extinct fire element to each flammable tile in its surroundings. At every simulation frame, this damage is calculated using the fire speed, the wind strength, the wind direction (these parameters can be chosen before launching the simulation), the humidity of each flammable tile, and the remaining fuel of the fire element tile. The obtained value is then subtracted to the remaining fuel of the flammable tile (starting from maxFuel). When the value reaches zero, the tile is set to OnFire, and a new fire element is spawned. The fire spreading stops when there are no more flammable tiles
+
+1 3
+
+Virtual Reality
+Fig. 7  Guided Mode, transportation phase, introductory part. The trainee must enter the green cylinder to start the explanation
+
+surrounding the fire elements and new fire elements cannot be spawned.
+The fire simulation is affected by the interaction with the firefighting tools. Each tool has a specific function and can alter the fire behavior as well as the state of the tiles (Fig. 6). In particular, the rake can reduce the quantity of fuel associated with a tile, decreasing the maxFuel parameter. If the rake is used on a non-burning tile and the remaining fuel is fully removed, the tile is set to Non-flammable and cannot be damaged anymore by the spreading logic; if the rake is used on a burning tile, it spreads the fire to the surrounding flammable tiles. The beater can be used directly on the fire to extinguish it. Each fire element is associated with an oxygen parameter that controls the interactions between the tools and the fire; this parameter has a default value of 100 (that is also its maximum value). Each interaction with the fire removes oxygen; if all the oxygen is removed, the fire element is extinguished, and the associated tile is set again to Flammable. When the use of the beater on a previously hit fire element stops, the oxygen level increases again. Furthermore, if the beater is used with excessive speed or force, the oxygen level is unaffected, and the fire spreading is sped up. Lastly, the shovel combines the behavior of the rake and the beater, and can be used both to remove the fuel and suffocate the fire.
+4.2.4 VR training simulation modalities
+The VRTS was designed to work in two modalities, referred to as Guided Mode and Wild Mode. The purpose of the former modality is to provide the trainees with a step-by-step, practical training on the considered firefighting tools. It is
+
+also used to recall some of the concepts already covered in the theoretical course, especially those which are particularly important for the experience. The latter modality, in turn, serves as a testing ground for the assessment of the trainee, who is requested to put in practice, in a spreading fire scenario, what was learned in the previous mode.
+In the Guided Mode, the trainee is driven through the different phases regarding the use of each tool: transportation, cover removal (not considered for the shovel), safety distance estimation, and operation. Each phase is divided in two parts: an introductory part in which an explanation of the procedural and safety aspects is given, and a performative part in which the trainee shall correctly carry out a series of actions in order to complete the phase and proceed to the next one. When fire is present, it does not spread or spreads in a controlled way.
+During the introductory part of each phase, the trainee is asked to reach a target in the scene (a green cylinder, shown in Fig. 7) to start the explanation. A voice-over (Voice 1) provides a general description of the current phase, adding theoretical details that will help the trainee during the performative part. For example, while describing the transportation, Voice 1 explains that the trainee must grab the tool with the dominant hand only, precisely in correspondence of the tool balance point, while keeping it parallel to the ground; the voice also says that the trainee shall keep the tool tip in the field of view and that the sharp parts of the tool, if present, must be directed outward to prevent injuries. Finally, Voice 1 adds that these guidelines are necessary to guarantee the safety of the trainee and the other operators, and to avoid unnecessary fatigue and excessive stress on the trainee’s body.
+
+1 3
+
+Fig. 8  Guided Mode, transportation phase, performative part; the blue cylinder guides the trainee in the scene
+
+Virtual Reality
+
+Fig. 9  Guided Mode, transportation phase, performative part; the trainee is asked to grab the shovel and follow a moving target in the scene. The icons show four errors (from left to right): the blade of shovel is not oriented outward, the shovel is not grabbed at the balance point, the trainee’s posture is not correct, and a danger situation is found since, in the particular case, the blade of the shovel is out of the trainee’s field of view
+
+During the performative part, a second voice-over (Voice 2) briefly describes one or more actions that the trainee is asked to perform with the help of blue targets in the scene (shown in Fig. 8). These targets can be static or moving, depending on the current task. The trainee must reproduce all the requested actions with a limited number of errors, otherwise the voice-over will request to repeat the whole part.
+The errors are detected by leveraging data about the position and orientation of all the HTC Vive Trackers and the HMD, which are used to compute a series of evaluation
+
+parameters (tool orientation, tool roll, hand position, body posture, etc.) at each simulation frame. When the trainee keeps making a mistake, Voice 2 promptly signals this fact and suggests a correction. To help the trainee realize that a mistake is being made (and limit the number of voice notifications), a series of visual cues continuously provide indications on the actual performance. This cues consist in on-screen icons that appear on a panel in the center of the trainee’s field of view as soon as an error occurs (Fig. 9).
+To give an example of a performative part, during the transportation phase the trainee is asked to follow a moving target
+
+1 3
+
+Virtual Reality
+
+in the scene while keeping a correct posture and carrying the tool in the correct way. If the trainee fails to keep the right posture, grab the tool with two hands, or place the hand away from the tool balance point, Voice 2 will signal the error (e.g., telling the trainee to place the hand in the balance point), and the corresponding error icon will appear. If the trainee manages to follow the target without making any icon appear, the phase will correctly end.
+In the Wild Mode (also referred to as Evaluated Mode), the trainee can autonomously put in practice what was taught in the Guided Mode by simulating the attack of a real fire line in a forest. No voice-overs or visual cues are present, and the trainee can verify the correctness of performed actions only by observing the fire behavior and the changes in the scenario due to performed interactions. Every trainee’s action is tracked to produce a final report that summarizes the overall performance. The report shows a series of scores associated with different aspects regarding the use of the firefighting tool:
+• transportation; • protection removal (rubber case for the rake, rubber band
+for the beater, not considered for the shovel); • safety distance estimation; • operation.
+Furthermore, the system signals if the trainee got burned during the experience or not.
+The Wild Mode is completely configurable: it is possible to choose the firefighting tool, the type of fire (fire front or ignition from random locations), the wind strength and direction, as well as whether to show the NPCs or hide them. The mode is designed to be experienced more than once, until the trainee is confident enough of the possessed abilities, also based on the assessment results obtained in the previous runs.
+For both the Guided Mode and the Wild Mode, it is necessary to specify some trainee’s physical characteristics (height and arm’s length) at the beginning of the experience. This can be done manually, or by means a semi-automatic calibration phase inside the application. During the simulation, the trainee’s height is compared with the HMD’s height to estimate the body posture, whereas the arm’s length is compared with the distance between the HMD and the Tracker on the wrist to determine the degree of stretching of the real arm.
+5 Real‑world practice training
+The real-world practical training included in the evaluation was arranged as a more conventional practice session by leveraging a low-fidelity simulation approach. The experience
+
+was designed in collaboration with instructors from the considered firefighting course and was meant as a complement to the existing video-based lessons. Differently than the VR experience, it was designed as an outdoor activity (like the final exam), to be performed on a wildland terrain covered with foliage. A forest firefighting instructor needs to be present.
+The training component of this experience is split in the already described characterizing phases (transportation, safety distance estimation, and operation), each organized in two parts (introductory and performative). The instructor is in charge of managing the introductory part, giving an explanation of the procedural and safety aspects of the current phase. Moreover, the instructor is responsible for signaling possible errors during the performative part, as well as for deciding whether the trainee has successfully completed the current phase and can thus move to the following one. For the transportation phase, the trainee is asked to transport the tool until the instructor signals that the phase has been completed. The instructor observes the actions of the trainee, signals possible errors, and judges the task as completed when the trainee does not make any mistake for approximately one or two minutes. In particular, if the tool is not parallel to the ground, it is hold with two hands, or its sharp edges are not facing outward, the instructor is tasked to signal the errors and ask the trainee to repeat the phase. For the safety distance estimation, the instructor places a target (i.e., a paper with a cross painted on it) on the ground and asks the trainee to assume the correct pose to estimate the safe distance from the indicated point, pretending it is a fire. If the pose is not correct, the error is signaled, and the trainee is asked to step back and repeat the whole action. If the pose if correct, after few seconds the phase is considered as completed. For the tool operation, the instructor places another target on the ground and arranges the foliage to form a ring around it. The trainee is asked again to pretend that the target is a fire and act accordingly. For instance, the trainee can use the tool to remove the fuel (the ring of foliage) or simulate the extinguishing of the fire by using the tool directly on the target. When all the required actions are correctly executed, the first half of the experience is concluded and the trainee can move to the assessment part.
+In the assessment part of the real-world training, the instructor arranges an adequate area to perform a low-fidelity simulation of a wildland fire situation. To signal the trainee the simulated position of the fire line, one or more targets are again placed on the ground. In addition, a bunch of foliage is scattered in front of the targets to enable the fuel removal action. The trainee is asked again to put in practice what was learned, simulating the attack of a fire line in a forest. In particular, starting from a point situated 10 m away from the simulated fire front, the trainee is asked to transport the tool, estimate the safety distance, and operate on the leaves
+
+1 3
+
+Virtual Reality
+
+Fig. 10  Comparison of the practice training phases (VR Training Simulation, upper row vs Real-world, lower row): (a, e) Guided Mode—-Transportation, (b, f) Guided Mode—Safety distance estimation, (c, g) Guided Mode—Operation, (d, h) Wild Mode
+
+or the targets to simulate a firefighting procedure. During the operations, the instructor evaluates the trainee’ actions, but does not provide any hint or feedback. After five minutes, the session is concluded, and the instructor provides a summary assessment about the trainee’s performance in the transportation, safe distance estimation, and operation phases.
+A comparison between the real-world practical training and the VRTS is shown in Fig. 10.
+6 Experiment
+In order to assess the effectiveness of the proposed VRTS, a user study was carried out.
+6.1 Participants
+
+6.2 Study design
+The 45 volunteers were assigned to three different groups of the same size (15 participants each). The three groups were blindly allocated to avoid potential self-selection bias and were defined as follows:
+• Video + VR (V+VR) group: the first group was composed of participants who also experienced, in addition to the standard training, the devised VRTS;
+• Video + Real-world practice (V+R) group: the second group was composed of participants who also experienced, in addition to the standard training, the realworld practice session;
+• Video-only (V) group: the third group was composed of participants who received no additional training over the standard video-based lessons.
+
+The study involved 45 volunteers (41 males and 4 females) aged between 19 and 56 ( x = 30.33 , s = 11.85 ) and randomly recruited among the trainees enrolled in the said forest firefighting training course. All the participants reported very little to no experience with VR, but almost all of them had some previous experience with the tools considered in the training (especially the shovel), though not pertaining their use in firefighting operations.
+
+For the sake of the investigation, the following hypothesis was formulated: the trainees of the V+VR group should better understand and remember how to perform the tasks with respect to those in the V group, thanks to the additional practice session in VR. The use of the VRTS should also improve the trainees’ motivation toward the course, as well as their learning experience.
+
+1 3
+
+Virtual Reality
+Fig. 11  Revised course schedule for the Video-only group
+
+Day 1
+
+Day 2
+
+Day 3
+
+Video-Based Training Exams
+
+BST (R)
+Break Break
+ISE (R)
+
+25m 1 night
+
+1 week
+
+2h
+(~5m per squad of 6 students)
+
+8h
+
+8h
+
+210m
+
+It is worth observing that, although the use of the V+R approach may have similar effects, the difference with respect to V (if any) could be assumed to be less pronounced with respect to V+VR, being the latter characterized by a higher level of physical and psychological fidelity and by a wider set of functionalities regarding the continuous, automatic evaluation of the trainee’s operations.
+The approach adopted to integrate the proposed VRTS within the existing course, the organization of the training phases, and the way to perform the comparison were inspired to Çakiroğlu and Gökoğlu (2019). In the present work, the first training phase corresponded to the lesson of the standard course pertaining the behavioral abilities tackled by the VRTS and the real-world practical experiences; hence, it will be renamed as BST (R), with R standing for Real-world. As said, lessons are traditionally followed by quiz sessions. The answers given in the quiz session were collected to evaluate the level of knowledge after the lesson for the third group. For the other two groups in which the trainees used also the VRTS or underwent the real-world practice, the quiz session was moved after the additional training. For the IST and ISA phases, the two modalities supported by the proposed VRTS (and replicated in the real world for the V+R group) were fitting well. In particular, the Guided Mode was employed for the IST phase, whereas two trials of the Wild Mode were employed as ISA phase. As for the real practical training, an instructor was employed to guide the trainees in the IST phase and to evaluate them in the ISA phase. In the following, the two phases will be cumulatively referred to as IST + ISA (VR) in the case of the V+VR group, and IST + ISA (R) in the case of the V+R group. Lastly, the final practice exam of the considered forest firefighting course served as real-world assessment of the trainees of the three groups. To avoid ambiguities with the name of the V+R training, this final phase was named as In Situ Exam (ISE, R).
+
+It was decided to focus the investigation on one of the three individual tools that are currently supported by the VRTS, i.e., the shovel. The reasons behind this choice were manifold. Firstly, the three tools share numerous characteristics, as they are used in similar contexts and require a common background for their operation. Hence, on the one side, a situation in which all the trainees try all the three tools would have been significantly influenced by learning effects. Secondly, in the existing course schedule, the lessons on the individual tools were originally included in the second day. In the revised schedule, the lesson on the shovel had to be anticipated at the end of the first day. This small change did not significantly increase the overall duration of the first day. For organizations reasons, however, also the IST + ISA (VR) and the IST + ISA (R) phases had to be necessarily allocated at the end of the same day, and running the Guided Mode and the Wild Mode for the sole shovel were expected to completely fill the available time. Multiplying by three this time would have not been a viable solution, as the trainees still had to face a second day of lessons few hours later. Finally, the shovel can be considered as a combination of the other two tools, sharing its uses with both the rake (for fuel removal) and the beater (for fire extinguishing); hence, it was assumed that evaluating the VRTS effectiveness on this tool could be a good proxy also for the other tools.
+The arrangement of the training phases within the revised course schedule for the three groups is depicted in Figs. 11 and 12.
+6.3 Procedure
+The procedure of the user study included the steps described in the following sub-sections.
+
+1 3
+
+Fig. 12  Training schedule for the Video + VR and Video + Real-world practice groups
+
+Day 1
+
+Day 2
+
+Virtual Reality
+
+Day 3
+
+Video-Based Training Exams
+Extra
+
+BST (R)
+Break IST + ISA (VR) / (R) 1 night Break Break
+ISE (R)
+
+Fig. 13  Picture taken right before the start of the Behavioral Skill Training (Real-world) phase, corresponding to the Italian forest firefighting unit course lesson on the shovel. Half of the trainees of the course were located in a second classroom
+
+25m 1h
+
+4h
+(~15m per
+student)
+
+8h
+
+1 week
+
+2h
+(~5m per squad of 6 students)
+
+8h
+
+210m
+
+6.3.1 Preparation
+
+6.3.2 Behavioral skill training (Real‑world) phase
+
+Close to the end of the first day, the trainees were requested to fill in a demographic questionnaire to collect personal data (gender and age). Afterward, they were introduced to the experiment, focusing on the overall procedure, on topics addressed, as well as on technological aspects (with a quick overview on VR and on equipment used). Their prior experience on these matters was also recorded.
+
+After the preparatory step, all the trainees took part in the standard forest firefighting course lesson concerning the individual tool considered for the study (Fig. 13). In particular, three instructional videos, officially named “spots”, regarding the use of the shovel for firefighting operations were shown. The first spot introduced the shovel, detailing the materials used to make it, and giving a general description of the different ways for using it as a firefighting tool.
+
+1 3
+
+Virtual Reality
+
+The second spot focused on the safety guidelines to follow for transportation and operation, showing how to correctly carry the shovel and how to use it for estimating the safety distance for working on fire. Finally, the third spot illustrated how to use the shovel to remove the fuel and extinguish the flames. From the three spots, the trainees were supposed to learn the behavior and rules to adopt for the correct use of the shovel on the fire front.
+At this point, the trainees were split in three groups. The V group included volunteers who, like in the standard course, watched only the instructional videos. After watching the spots, the trainees in this group took part in a quiz session aimed to evaluate their knowledge on the tackled contents. After the quiz, an instructor from the Italian forest firefighting unit of the Piedmont Region was in charge of providing them with feedback and comments about their answers in a short debriefing session. For the purposes of this study, an additional questionnaire was used to evaluate the trainees’ motivation and gather their opinion on the overall experience (more details on the quiz and the questionnaire will be provided in Sect. 6.4). In the quiz sessions of the course, the trainees are allowed to try answering each question multiple times, until they all provide the correct answer. In this study, the answer provided as first try was recorded to be later used for comparing the two groups. The V+VR and V+R groups, made up of trainees who were going to, respectively, experience the VRTS and the realworld practice session after having watched the spots, were exempted from this quiz session.
+6.3.3 In Situ Training (VR) phase
+After a short break, the trainees in the V+VR group were requested to participate in a training session with the VRTS in Guided Mode, in which they were instructed step-by-step on the use of the shovel.
+6.3.4 In Situ Assessment (VR) phase
+Right after the above session, the trainees in the V+VR group were invited to use again the VRTS, but in Wild Mode. In this case, they had to put in practice what they had learned in the previous activities (video lesson and Guided Mode training) and received an automatic evaluation report on their performance. Regarding the setting of the VRTS, the fire was spawned as a fire front, and the wind strength was set to zero (to simulate a real exercise on a controlled fire). The NPCs were present in the scene to contextualize the trainees’ actions. After a first trial of Wild Mode with the fire speed set to the minimum value, the trainees experienced it a second time at a slightly higher difficulty level, and were asked to try improving their previous performance.
+
+Once this second VR session was completed, the trainees were delivered the same quiz and questionnaire used with the V group. They were also provided with feedback on their behavior and correct application of the learned procedures by an instructor, in order to ensure that both the groups, at the end of the training, had received the same, standard training requested for issuing the certificate. For the V+VR group, two further sections were added to the questionnaire, aimed to collect the trainees’ feedback on the usability of the VRTS (details will be provided in Sect. 6.4).
+6.3.5 In Situ Training + In Situ Assessment (Real‑world)
+phase
+Similarly to the V + VR group, the V+R group was requested to participate in the real-world practice training session with the real shovel under the supervision of an instructor, as previously detailed in Sect. 3. The methodology was the same of the previous group, as trainees experienced the Guided Mode training followed by two runs of the Wild Mode. Then, similarly to the V+VR group, they were asked to answer the questions of the quiz and to fill in the questionnaire already used with the V group.
+6.3.6 In Situ Exam (Real‑world) phase
+One week after the previous phases, the trainees of the three groups were requested to engage in a practice exam, in which they were asked to apply on field the concepts learned a week before. The exam considered all the topics covered by the original course lessons, and a session was dedicated, as customary, to the individual firefighting tools. In the traditional exam of the course, the trainees are subdivided in squads of six members. For the evaluation regarding individual firefighting tools, an instructor is in charge of assessing the trainees’ performance. However, this evaluation is made on a per-squad basis, and it considers generic aspects, such as the use of PPE, overall compliance to procedures, teamwork attitude, and respect of timing.
+For the purposes of this study, an additional instructor was employed during the exam session on the individual tools, who was in charge of making an ad hoc assessment concerning solely the use the shovel. The assessment was performed on a per-trainee basis, considering the same aspects evaluated in the Wild Mode.
+During the exam on individual firefighting tools, the instructor positioned the squad of six trainees, already equipped with their PPE, one next to the other and sufficiently spaced apart. In front of them, a corresponding line of hand tools was placed on the ground few meters away. Each trainee, at the command of the instructor, had to walk toward the tool, grab it from the ground, transport it to an area roughly representing the fire front, and operate it for
+
+1 3
+
+Fig. 14  In Situ Exam (Realworld) phase, corresponding to the practice exam on individual firefighting tools of the Italian forest firefighting unit course
+
+Virtual Reality
+
+few minutes (Fig. 14). During execution, the instructor took note of correct and incorrect actions of each trainee using an assessment sheet. All the evaluated actions are mandatory prescriptions; hence, even the non-compliance to one of them had to be considered as unacceptable for the sake of getting the certificate.
+After having evaluated the whole squad, the instructor told the trainees to go back to the starting point, leave the hand tools in their original place, and exchange their positions to make each squad member end up in front of a different tool. This step was repeated three times to ensure that each trainee was actually assessed on the use of the shovel, having also operated each of the three tools once.
+6.4 Measures
+Participants’ performance and experience with the VRTS, for the trainees who used it, were evaluated in both objective and subjective terms. For the objective evaluation, two metrics were used. The first metric, named quiz score, corresponds to the final score (i.e., number of correct answers) obtained in the quiz. The quiz was composed of 10 multiplechoice questions, with only one correct answer per question. Therefore, the maximum score that could be obtained for this metric was 10.
+The second metric accounts for the evaluation provided by the instructor in the practice exam; thus, in the following, it will be referred to as practice score. In particular, the evaluation considered the same (three, in the case of the shovel) dimensions assessed in the Wild Mode, i.e., transportation, safety distance estimation and operation. In order to ease the job of the instructor, in the assessment sheet, each dimension was considered as split in several atomic actions, for a total of 12 items to assess. Four of them concerned the transportation, two of them pertained the estimation of the
+
+safety distance, and the remaining six regarded the actual operation of the firefighting tool.
+During the practice exam, the instructor assigned one point for each item that was executed correctly, zero points if the item was performed in the wrong way or ignored by the trainee. The maximum score that can be obtained for this metric was 12, then normalized between 0 and 100.
+Although at the end of the additional training an evaluation was collected for the same three performance dimensions, it was decided not to use these outcomes in the comparison, as done in Çakiroğlu and Gökoğlu (2019). Like in that work, the scores reported by the VRTS were only used for providing trainees with a feedback between the two trials and to direct them toward the adoption of correct behaviors.
+The subjective evaluation was based on the questionnaires that were delivered after the trainees had watched the spots (for the V group) or had experienced the additional practice training (for the V+VR and V+R groups). The questionnaires included two common sections, aimed to investigate different dimensions. The first section evaluated the trainees’ motivations at learning the considered topics and was based on the Instructional Materials Motivation Survey (IMMS) (Keller 2010). As proposed by Strada et al. (2019), the questionnaire included 36 statements to be scored on a 1-to-5 Likert scale (not true, slightly true, moderately true, mostly true, and very true). Statements can be categorized into four sub-scales: attention, confidence, relevance, and satisfaction. By combining the scores using the strategy described by Keller (2010) it is possible to compute a score for each subscale and an overall (total) score. The goal of the second section was to collect feedback on the learning experience based on the AttrakDiff user experience questionnaire (Hassenzahl et al. 2008). In particular, as proposed by Jost et al. (2020), the analysis focused only on the Attractiveness and Hedonic Quality Stimulation dimensions, and included 14 pairs of
+
+1 3
+
+Virtual Reality
+
+Table 2  Results for the quiz score metric: percentages of trainees who answered correctly for any given question
+
+Question topic
+
+V
+
+V+VR
+
+1. Effect of fuel compression with the blade of the shovel (operation) 2. Secondary use of the shovel alternative to the fire extinguishing (operation) 3. First operation to perform when facing the fire front (safe distance est.) 4. Possible risks of burns when using the shovel in direct attack (operation) 5. Mandatory level of the rules of transport, safety distance, posture, and use of PPE (general) 6. How to obtain the most effective result with the shovel (operation) 7. Correct behavior when operating the shovel (operation) 8. Correct safety distance from other operators when operating the shovel (operation) 9. Correct hand position on the shovel during transportation (transportation) 10. Correct shovel bearing during transportation (transportation) Score
+p value
+
+100% 80.00% 40.00% 100% 93.33% 60.00% 73.33% 80.00% 80.00% 86.67% x = 81.33%
+s = 1.54
+p = .748
+
+100% 73.33% 60.00% 100% 93.33% 100% 80.00% 80.00% 86.67% 100% x = 85.33%
+s = 0.95
+
+Mean values, standard deviations and p value are provided for the overall score
+
+V+R
+100% 73.33% 46.67% 93.33% 80.00% 80.00% 93.33% 100.00% 80.00% 93.33% x = 84.00%
+s = 1.88
+
+opposing terms through which the experience should be evaluated on 1-to-7 scale (being 1 the positive term and 7 the negative one).
+The two sections above were filled in by the trainees from all the three groups. For the trainees in the V+VR group, the questionnaire was complemented by two additional sections aimed to evaluate the VRTS usability. In particular, one of the additional sections asked the participants to rate the system usability according to the 10 statements of the System Usability Scale (SUS) (Brooke 1996). The other section investigated in depth a number of usability factors (namely, functionality, user input, system output, user guidance and help, consistency, flexibility, simulation fidelity, error correction/handling and robustness, sense of immersion/presence, as well as overall system usability) based on the VRUSE questionnaire (Kalawsky 1999). Both these sections had to be rated on a 5-point Likert scale (from total disagreement to total agreement).
+The full version of the questionnaire, the quiz, and the assessment sheet used by the instructor for evaluating the trainees’ performance in the practical exam were in Italian, as all the participants involved in the study were native Italian speakers. The original and translated version are available for download on OSF6, under the Questionnaires folder. Footage of the experimental activities is also available at the same link, in the Videos folder.
+6  https://​osf.​io/​4h6q2/?​view_​only=​b3163​2a5fd​9b489​9b038​900bd​ 97266​29.
+
+7 Results
+Results collected for the objective and subjective metrics presented in the previous section were used to compare the performance of the V, V+VR and V+R groups and, hence, of the three associated training modalities.
+In order to analyze the statistical significance of the results, the Shapiro–Wilk test was first performed to verify the normality of data. Since data resulted to be characterized by non-normal distributions, the nonparametric Kruskal–Wallis test with 5% significance ( p < .050 ) was applied to identify significant differences. Pairwise comparisons was studied by using Mann–Whitney U test for two independent samples.
+7.1 Objective results
+The quiz scores obtained by the three groups are reported in Table 2. For each question, the table indicates the relative topic in place of the original text. The full questions and the available choices can be found in the questionnaire linked in Sect. 6.4.
+No statistically significant differences were observed for the various questions, neither for the overall quiz score. This outcome was expected, since the three groups attended the same video-based lessons on the considered topics, and the amount of information repeated in the VR and the real-world practice training were kept as low as possible.
+Considering the ISE (R) phase (i.e., the practice exam), the scores assigned by the instructor are provided as percentages in Table 3. It can be immediately observed that the V+VR group performed significantly better than the V and V+R groups in terms of total score. No statistical differences were found between the V and V+R group. The evaluation
+
+1 3
+
+Virtual Reality
+
+Table 3  Results for the practice score metric: percentages of trainees who performed correctly any given action
+
+Transportation
+
+V
+
+V+VR
+
+V+R
+
+1. Hand held the shovel from the balance point / shovel paral- 86.67% lel to ground
+
+2. Shovel blade oriented outward
+
+66.67%
+
+3. Correct height of the shovel from the ground / arm outstretched
+4. Shovel blade always kept in the field of view
+Score
+
+86.67%
+86.67% x = 81.66% s = 0.29
+
+p value
+
+p = .415
+
+Safe distance estimation
+
+V
+
+93.33%
+86.67% 100%
+100% x = 95.00% s = 0.10
+V+VR
+
+93.33%
+86.67% 93.33%
+86.67% x = 90.00% s = 0.15
+V+R
+
+5. Correct body pos. during estimation 6. Correct arm pos. during estimation Score
+p value Operation
+
+80.00% 66.67% x = 73.33% s = 0.40 p = .816
+V
+
+73.33% 73.33% x = 73.33% s = 0.44
+V+VR
+
+73.33% 66.67% x = 70.00% s = 0.35
+V+R
+
+7. Correct freq. of fuel compression 8. Pressure on fuel maintained 9. Shovel blade always kept in the field of view 10. Safe distance maintained 11. Shovel used as a rake (fuel removal) 12. Correct positioning of hands on the tool Score
+p value Pairwise comparisons
+Total score
+
+73.33% 73.33% 80.00% 93.33% 73.33% 73.33% x = 77.77%
+s = 0.22
+p=.
+V vs V+VR p = . V vs V+R p = .504 V+VR vs V+R p < .
+V
+
+100% 100% 100% 100% 80.00% 93.33% x = 95.55%
+s = 0.09
+
+66.67% 86.67% 73.33% 73.33% 86.67% 66.67% x = 75.55%
+s = 0.17
+
+V+VR
+
+V+R
+
+Score
+p value Pairwise comparisons
+
+x = 78.33% s = 2.57
+p=. V vs V+VR p = . V vs V+R p = .498 V+VR vs V+R p = .
+
+x = 91.66% s = 1.41
+
+x = 79.44% s = 1.45
+
+Mean values, standard deviations and p-value are provided for the total scores and for each of the three phases (transportation, safe distance estimation, operation). Bold font is used to highlight the significant p values ( p < .050 ). The significant pairwise p-values are listed only where the
+comparison between the three groups is significant
+
+pertained aspects on which proficiency is mandatory: hence, the advisable value for each of the evaluated actions is 100%. The only exception is the action number 11, which concerns the optional use of the shovel as a rake (for fuel removal).
+The 12 items which concur to the total score can be then subdivided into the three characterizing phases (transportation, safe distance estimation and operation) and analyzed separately. Regarding the transportation phase, no significant differences were observed, although for each item the
+
+V+VR group showed higher adherence to the safety prescriptions than the V and V+R groups, reaching peaks of 100% adherence (for items 3 and 4). It should be noted that the practice exam, as it was structured, included a particularly short transportation distance, around 3–4 m. Because of this fact, trainees experienced a very compressed transportation phase. A more prolonged transportation phase could have highlighted the possible advantage of the additional practice training for trainees of the V+VR and V+R groups.
+
+1 3
+
+Virtual Reality
+Fig. 15  Average results for the Instructional Materials Motivation Survey (Keller 2010): Aggregate results for the four sub-scales. Standard deviations are expressed via error bars
+
+For the safe distance estimation, again, no significant differences were observed. In this case, the scores for all the groups were particularly low. The limited adherence to this prescription may be related to the fact that, during the practice exam, the trainees were not facing a real fire front; hence, a real threat was not perceived. As a consequence, even though they may theoretically know the correct sequence of actions, they could forget to estimate the safe distance from the fire before starting to operate on it. In theory, the experience in the VRTS was supposed to provide additional awareness regarding this aspect. However, this result did not come completely unexpected, as many trainees in the V+VR and V+R groups already showed a similar behavior in the previous training phases. In particular, even though they were forced to adopt the correct safe estimation pose to move forward in the step-by-step training Guided Mode of the VRTS and real-world practice), most of them later forgot this step in the ISA phase (Wild Mode of the VRTS and real-world practice), probably for the same reasons of the practice exam.
+Finally, for the operation phase, the V+VR group significantly outperformed the results of the V and V+R groups. In this phase, which covers most of the duration of the practice exam, trainees in the V+VR group showed a 100% adherence to almost all the mandatory prescriptions. A higher results for the optional use of the shovel for fuel removal, which played a big part in the VRTS experience, was observed too.
+These results suggest that the additional VR training helped the trainees in the V+VR group to remember how to correctly perform the various operations, letting them avoid errors that, on the contrary, were frequently made by trainees in the V and V+R groups; this outcome confirms the hypothesis in terms of objective results.
+Intuitively, one could expect that the additional practice training of the V+R group would have improved the trainees’ performance with respect to the V group too, which
+
+was not the case. However, this outcome is not totally unexpected. On the one hand, most of the trainees claimed to have prior experience with the considered tool (the shovel) in the field of forestry; hence, during the exam, none of them was handling a shovel for the first time. The V+VR group, on the other hand, probably benefited of the VRTS functionalities for continuous assessment, as well as of its higher fidelity with respect to the real-world training experienced by the V+R group.
+7.2 Subjective results
+The results based on the IMMS and the AttrakDiff questionnaires are shown in Figs. 15 and 16, respectively.
+For the results regarding trainees’ motivation investigated through the IMMS, in order to ease the comparison between the three groups a score was computed for each sub-scale, as proposed by Keller (2010). The results for the four subscales and the total score are reported in Fig. 15, whereas the individual scores assigned to each statement are given in Table 4.
+Starting with statistically significant results, it is possible to notice that the trainees in the V+VR group were able to hold their attention high more than the trainees in the V group and judged the experience as more satisfying. For the V+R group, on the other hand, no significant differences were found with respect to both the V and V+VR groups. Moreover, the difference in terms of total score was significant, suggesting a higher motivation for the V+VR trainees than for the V trainees. Also for the total score, no significant differences were observed between the V+R group and the other two groups.
+These results can be explained by analyzing the individual answers provided by the trainees to the statements regarding the attention and satisfaction dimensions.
+More specifically, starting with the attention, the quality of the information provided during the experience and
+
+1 3
+
+Virtual Reality
+
+Table 4  Subjective results based on the Instructional Materials Motivation Survey (Keller 2010): Average scores for individual statements
+
+Statement
+
+V V+VR V+R K-W V vs V+R V vs V+VR V+VR vs V+R
+
+1. After the information provided in the preparatory step of this expe- 4.07 3.47 3.60 .224 –
+
+–
+
+–
+
+rience (in this questionnaire, “experience” has to be intended as the
+
+visualization of the videos and the use of virtual reality), I had the
+
+impression that it would be easy for me. (CONF)
+
+2. There was something interesting at the beginning of this experience 3.47 4.20 4.07 .152 –
+
+–
+
+–
+
+that got my attention. (ATT)
+
+3. The addressed contents (in this questionnaire, “contents” have to be 2.07 1.47 1.87 .566 –
+
+–
+
+–
+
+intended as the theoretical and practical concepts about the use of
+
+the shovel in the context of forest firefighting) were more difficult to
+
+understand than I would like for them to be. (CONF)
+
+4. After the information provided in the preparatory step of this
+
+3.60 3.60 4.33 .035 .040
+
+1
+
+.016
+
+experience, I felt confident that I knew what I was supposed to learn.
+
+(CONF)
+
+5. Completing this experience gave me a satisfying feeling of accom- 3.60 4.27 3.93 .258 –
+
+–
+
+–
+
+plishment. (SAT)
+
+6. It is clear to me that contents of this experience are related to things 3.67 3.53 3.07 .342 –
+
+–
+
+–
+
+I already know. (REL)
+
+7. So much information has been provided that it was hard to pick out 2.00 2.07 1.53 .281 –
+
+–
+
+–
+
+and remember the important points. (CONF)
+
+8. The addressed contents are eye-catching. (ATT)
+
+2.73 3.67 3.00 .127 –
+
+–
+
+–
+
+9. There were practical examples that showed me how the addressed 3.80 4.00 4.27 .515 –
+
+–
+
+–
+
+contents could be important. (REL)
+
+10. Completing this experience successfully was important to me.
+
+4.07 4.20 4.47 .721 –
+
+–
+
+–
+
+(REL)
+
+11. The quality of the information provided helped to hold my atten- 3.20 4.13 4.47 .011 .005
+
+.035
+
+.422
+
+tion. (ATT)
+
+12. This experience is so abstract that it was hard to keep my attention 2.53 1.53 1.27 .005 .003
+
+.022
+
+.452
+
+on it. (ATT)
+
+13. After the information provided in the preparatory step, I was confi- 4.33 4.13 4.60 .314 –
+
+–
+
+–
+
+dent that I could learn the contents. (CONF)
+
+14. I enjoyed the experience so much that I would like to know more 2.93 4.00 4.60 .002 < .
+
+.010
+
+.060
+
+about this topic. (SAT)
+
+15. The addressed contents look dry and unappealing. (ATT)
+
+2.53 1.27 1.47 .015 .040
+
+.009
+
+.405
+
+16. The addressed contents are relevant to my interests. (REL)
+
+3.80 4.07 4.13 .568 –
+
+–
+
+–
+
+17. The way the information is arranged and presented helped keep 3.40 4.27 4.53 .007 .003
+
+.032
+
+.262
+
+my attention. (ATT)
+
+18. There were explanations and examples of how practically apply 3.80 4.00 4.27 .439 –
+
+–
+
+–
+
+the addressed contents. (REL)
+
+19. The evaluation expected at the end of the experience was too dif- 2.07 1.93 1.20 .057 –
+
+–
+
+–
+
+ficult. (CONF)
+
+20. This experience has things that stimulated my curiosity. (ATT) 2.80 4.07 4.20 .005 .004
+
+.008
+
+.706
+
+21. I really enjoyed studying these contents. (SAT)
+
+2.80 4.13 4.33 < . < .
+
+.001
+
+.265
+
+22. The amount of repetition in this experience caused me to get bored 2.40 1.53 1.80 .109 –
+
+–
+
+–
+
+sometimes. (ATT)
+
+23. The contents and methods of conducting the experience convey 3.73 4.20 4.13 .172 –
+
+–
+
+–
+
+the impression that this topic is worth knowing. (REL)
+
+24. I experienced some things that were surprising or unexpected.
+
+2.00 3.87 3.00 .002 .043
+
+.001
+
+.040
+
+(ATT)
+
+25. After working on this experience, I was confident that I would be 3.67 3.93 4.20 .396 –
+
+–
+
+–
+
+able to pass a practical evaluation on it. (CONF)
+
+26. This experience was not relevant to my needs because I already 2.53 1.53 1.73 .040 .059
+
+.019
+
+.074
+
+knew most of its contents. (REL)
+
+27. Feedback received after the evaluation helped me feel rewarded 3.07 3.40 4.00 .142 –
+
+–
+
+–
+
+for my effort. (SAT)
+
+1 3
+
+Virtual Reality
+
+Table 4  (continued) Statement
+
+V V+VR V+R K-W V vs V+R V vs V+VR V+VR vs V+R
+
+28. The variety of provided information (audio, video, etc.) helped 3.00 4.07 4.33 .006 .003
+
+.017
+
+.525
+
+keep my attention. (ATT)
+
+29. The pace of the explanation was slow and boring. (ATT)
+
+2.80 1.60 1.67 .010 .011
+
+.012
+
+.410
+
+30. I could relate the contents of this experience to things I have seen 4.07 3.67 3.40 .318 –
+
+–
+
+–
+
+or done in my own life. (REL)
+
+31. The experience provided so much information that it is irritating. 2.47 1.33 1.53 .015 .035
+
+.009
+
+.634
+
+(ATT)
+
+32. I felt good to successfully complete this experience. (SAT)
+
+4.07 4.40 4.47 .585 –
+
+–
+
+–
+
+33. The addressed contents will be useful to me. (REL)
+
+4.33 4.27 4.80 .053 –
+
+–
+
+–
+
+34. I could not really understand quite a lot of the experience. (CONF) 1.47 1.00 1.27 .220 -
+
+-
+
+-
+
+35. The good organization of the contents helped me be confident that 4.00 4.27 4.07 .675 –
+
+–
+
+–
+
+would learn this topic. (CONF)
+
+36. It was a pleasure to work on such a well-designed experience.
+
+3.13 4.20 4.40 .004 .003
+
+.009
+
+.428
+
+(SAT)
+
+Sub-scale to which each statement belongs to is reported with the acronyms: CONF (confidence), ATT (attention), SAT (satisfaction), and REL (relevance). Bold font is used to highlight the significant p values ( p < .050 ). When the three-way comparison conducted with the Kruskal–Wal-
+lis Test (K-W column) is significant, the significant pairwise p values of the follow-up test are provided
+
+Fig. 16  Subjective results based on the AttrakDiff questionnaire (Hassenzahl et al. 2008): Attractiveness and Hedonic Quality Stimulation dimensions. Low values correspond to a positive evaluation
+
+their organization helped more the V+VR and V+R trainees than the V trainees to hold their attention (statements 11 and 17). Moreover, the V trainees considered the experience more abstract than the V+VR and V+R trainees, which made it harder for them to remain focused (statement 12). Compared to the V+VR and V+R trainees, the V trainees found the training contents more dry and unappealing (statement 15) and perceived the experience as characterized by a lower number of characteristics capable of stimulating their curiosity (statement 20). Still considering the statements pertaining attention, the learning experience was rated as more surprising and unexpected by the V+VR and V+R trainees with respect to the V trainees, and also by the V+VR trainees with respect to the V+R trainees (statement 24). This outcome shows that the practice training itself was perceived as unexpected, but the V+VR group perceived it
+
+as more novel than the V+R group, probably thanks to the use of the VR technology. Moreover, the V+VR and V+R trainees considered the variety of the information provided (i.e., audio, video, etc.) and the pace of the explanation to be better in helping them to keep their attention with respect to the V trainees (statements 28 and 29). Finally, the V trainees indicated that the experience provided so many information to be perceived as more irritating than the trainees in the V+VR and V+R groups (statement 31).
+Although no significant differences were observed for the confidence sub-scale, results of statement 4 indicates that the V+R trainees felt as more confident than the V and V+VR trainees that they knew what they were supposed to learn right after receiving the introductory information regarding the experience. An explanation for this outcome may be that the V group perceived the video-only approach
+
+1 3
+
+Fig. 17  Average results for the VRUSE questionnaire (Kalawsky 1999) (Video+VR trainees only). Standard deviations are expressed via error bars
+
+Virtual Reality
+
+as not particularly suitable for learning a practical activity, whereas the V+VR group may have been put in awe due to the fact that they were not familiar with the VR technology.
+Similarly, for the relevance sub-scale, no differences were found between the three groups, except for statement 26, which indicates that the V trainees appeared to be less interested in the experience than the V+VR trainees, as believed that they already knew most of the contents. However, as demonstrated by the final exam results, this outcome may have been caused by a sense of false knowledge, as the V trainees did not have the possibility to test their abilities on the field after the standard course.
+Regarding satisfaction, the V+VR and V+R trainees were more leaned than the V trainees toward stating that they enjoyed the experience so much that they would like to know more about the topic (statement 14). Moreover, the trainees in the V+VR group enjoyed studying the considered contents more than the trainees in the V group (statement 21) and stated that it was really a pleasure for them to participate in such a well-designed experience (statement 36).
+For what it concerns the second section of the questionnaire, which investigated the attractiveness and the stimulation of hedonic quality, from Fig. 16 it is possible to notice that all the evaluated dimensions present statistically significant differences, with average scores for the V+VR group outperforming those for the V group on all the attribute pairs, and the V+R group appearing as a middle-ground between the other two groups (lower scores indicate a better result).
+In particular, considering the Attractiveness dimension, the V+VR experience was judged as more motivating, appealing, good and pleasant than the V and V+R ones. At the same time, the V+VR experience was also perceived as more inviting, likeable and attractive than the V+R one. Finally, the V+R experience overcame the V one in terms of appeal, goodness, attractiveness and pleasantness.
+
+New positive aspects in favor of the V+VR experience and, to a lesser extent, of the V+R one, emerged from the analysis of the Hedonic Quality Stimulation dimension. Specifically, the V+VR experience resulted as the most novel, captivating, innovative, bold, creative and inventive among all. Moreover, it was also perceived as more challenging than the V one. Finally, the V experience was perceived as more ordinary, conservative, cautious, unimaginative and conventional than the V+R one.
+Based on these results, it is arguable that the addition of a practice training brings a number of benefits to the perceived quality of the learning experience. However, these benefits become even more evident when the practice activity is performed in a VRTS, confirming the hypothesis also in terms of subjective results.
+The second section of the questionnaire concludes the comparative analysis between the three groups. However, an in-depth analysis was also performed based on the SUS and the VRUSE questionnaire, with the aim to assess aspects regarding the VRTS used in the experiments. As for the SUS, the proposed system obtained a 78.33 usability score; according to the categorization proposed by Aaron et al. (2009), it corresponds to a B+ grade, which is associated with the class “Good” in the adjective rating scale.
+Finally, the trainees showed appreciation for the usability of the VRTS along almost all the dimensions considered by the VRUSE questionnaire.
+Average scores for each dimension, computed as indicated by Kalawsky (1999), are depicted in Fig. 17. Scores are generally close to and/or greater than 4, confirming the great appreciation expressed by the trainees for the VRTS for what it concerns the functionality, user input, system output, immersion/presence, and overall system usability dimensions. These results suggest that the trainees found the level of control provided by the system, the device leveraged as input (i.e., the real shovel tracked in the immersive
+
+1 3
+
+Virtual Reality
+
+environment serving as passive haptics), and the output (the HMD and the visual feedback) as appropriate. These feelings probably contributed at making the trainees perceive a high sense of presence and immersion, and at making them judge the system as characterized by a high usability, overall. A dimension showing possible limitations is that pertaining error correction/handling and robustness, since the results show that the trainees had a limited perception of the fact that they were making errors and/or were unaware of the methods provided by the system to detect and correct them. The remaining dimensions show acceptable values, confirming the system ease of use (user guidance and help), the coherence in system behavior and use of icons (consistency), the appropriate system response to different trainees’ behaviors (flexibility), as well as the accuracy of the environment and of fire propagation (simulation fidelity).
+8 Discussion and conclusions
+This paper investigates the combined use of VR and passive haptic interfaces as supporting tools in the context of a formal first responder training course. A VRTS was developed in collaboration with a first responder body (the forest firefighting unit of the Piedmont Region, Italy) to support the training and assessment of beginner trainees on the use of three firefighting hand tools, i.e., the shovel, the rake and the beater. The VRTS was evaluated as a complementary add-on to the standard course. The VR experience lets the trainees, equipped with realistic replicas of the hand tools as passive haptics, put in practice the previously learned concepts in a safe and repeatable virtual environment enriched with a realistically looking, real-time fire simulation. In order to isolate the effects of VR simulation from the possible advantages brought by the implicit, additional experience with the physical tools (the passive haptics), a third training experience was included in the evaluation. In this latter experience, the trainees experienced a real-world practice training as a follow-up to the course lessons. A user study involving 45 trainees was carried out during the mentioned course, focusing on one of the above tools (precisely, the shovel).
+Results showed that the additional use of the VRTS provided a significant benefit in terms of procedural learning when compared with both the traditional course lessons alone and the real, low-fidelity practice training, allowing the trainees to better remember the safety concepts related to the use of the considered firefighting tool. The practical experience helped the trainees of the V+VR group in correcting their wrong behaviors before the examination, letting them reach better performance levels in the practice exam with respect to the other groups. The same cannot be said for the trainees who experienced the real-world practice session, probably due the fact that the instructor tasked to guide and
+
+evaluate them was not able to give the same, precise feedback which was automatically produced by the VRTS. In particular, the trainees who underwent just the video-based training had no previous experience with the firefighting tool and under-performed in the operation phase of the exam. According to the open feedback collected from the trainees, the video-based course was considered as too theoretical, and a practice session on the use of the tool would have improved the learning experience. The trainees who experimented the additional real-world training complained about the low fidelity of the simulation; the absence of a real fire resulted in a training that failed to reproduce the conditions (e.g., stress and physical struggle) of a real scenario, and this aspect probably led the trainees to underestimate the practice session, reducing its potential benefits. Finally, the trainees who used the VRTS praised the possibility to put in practice the notions learned in the video lessons while working in a realistic scenario in which they were aware of the risks associated with the presence of fire; this fact, together with the use of passive haptics, resulted in an experience in which the trainees were able to achieve the expected benefits regarding the use of the firefighting tool, thus explaining the significantly higher scores obtained in the operation phase of the exam.
+Considering conceptual learning, no significant differences were found between the three groups, since all the trainees attended the same theoretical lessons, and the additional sessions (VR and real-world practice) were not focused on the theoretical concepts of the considered firefighting operations. The VRTS also led to a significantly better consideration of the overall learning experience in terms of attractiveness and hedonic quality stimulation, both with respect to the standard video-based course alone and, to a lesser extent, to the real-world practice.
+The activity highlighted some limitations related to the original firefighting course, the experimental protocol, as well as the VRTS experience. For what it concerns the course, it was realized that its effectiveness may be hard to evaluate (and compare), due to the way the trainees’ performance is analyzed. In fact, the quiz scores are the sole truly objective measure, but focus only on theoretical aspects without covering the procedural elements of firefighting operations. The practical evaluation during the exam, in turn, is based on the subjective observations performed by the instructor; thus, it may be subject to bias. A way to cope with this issue could be to add a VR session after the exam to evaluate all the trainees using the report generated by the Wild Mode of the VRTS. However, this solution could possibly introduce other limitations since, e.g., it may penalize trainees who had never practiced with the VR application.
+Furthermore, as remarked by several trainees, the developed VRTS currently presents some hardware limitations, mainly due to the tracking performance of the employed
+
+1 3
+
+Virtual Reality
+
+hardware. During the procedure, the trainees can occasionally be a source of occlusion for the trackers on the passive haptic prop that they are operating, which could cause unpredictable behaviors of the visualized virtual tool. Similar issues are affecting the tracking of the trainees’ hands, resulting in possible errors and inaccuracies during the automatic assessment of their actions. Although this phenomenon is sporadic, it could be solved by placing the trackers associated with the passive haptics in different positions or by using two trackers per tool.
+Apart from the tracking issues, some trainees reported that they felt the need for additional physical space to perform their actions. In fact, in order to let the trainees experience the transportation phase for a reasonable amount of time, the Guided Mode of the VRTS makes the user go round in circles for few minutes in order to cope with the physical size of the room, and this choice may be perceived as disorienting and boring. At the same time, the depicted virtual space in the Wild Mode is much wider than the available space in the real world. Even though the playable area automatically adapts to the real room size, some trainees felt oppressed and limited because of the lack of complete freedom of movement. These issues may be solved by widening the tracking area, e.g., by exploiting a higher number of base stations, or by employing inside-out VR devices. In this second case, the passive haptic props may need to be tracked with a different technology, since inside-out HMDs usually do not handle additional tracked elements other than the hand controllers.
+An issue that emerged during the IST (VR) phase was related to the functionality of the error icons. Some trainees judged them as confusing (in terms of semantics), annoying, or oddly placed. Icons were also perceived as ambiguous in presence of tracking problems. Probably, simply replacing them, e.g., with an audio feedback would not be a viable solution, due to the risk of raising the perceived annoyance. Hence, alternative approaches should be investigated in order to provide continuous feedback on the performed actions in a more intuitive and comfortable way.
+Regarding the ISA (VR) phase, some trainees expressed the desire for additional trials with the Wild Mode of the VRTS, to further improve their performance. As said, for organizational reasons, the experimental activity allowed only two runs of this training mode. However, it is reasonable to expect that letting the trainees repeat the Wild Mode experience multiple times until they feel completely confident could bring to even better results in the comparison with the standard course lesson alone.
+An already mentioned problem observed during the experiments was the scarce adherence of the trainees to the safety distance estimation prescription. A viable solution to this problem could be to modify the Guided Mode of the VRTS to make it ask the trainees to assume the safety
+
+distance estimation pose multiple times, by also stressing the importance of this action in the voice-over explanation. Along with that, the ISE (R) phase could be enriched with additional elements to better empathize the trainees with the depicted situation, e.g., by extending the distance traveled in the transportation phase or by adding a visual representation of the fire front, if not even a real controlled fire.
+Besides addressing the above limitations, another possible research direction could be to investigate the use of VR as a replacement of the current course. To this aim, a crossover user study could be performed: half of the participants could use VR before the class session, the other half after the class session; by collecting evaluations after each round, it would be possible to isolate the VR contribution.
+Further developments could be oriented toward extending the analysis to the other supported hand tools (rake and beater), by applying again the devised experimental protocol in the context of future course rounds. It could be relevant to include in the analysis also ranged tools (e.g., backpack pumps and blowers De Lorenzis 2022); given that they would require different simulation approaches for both the VRTS scenario and passive haptic interfaces, results could be particularly interesting.
+Finally, the VRTS performance regarding knowledge retention may be evaluated by recalling the trainees who participated in the experimental activity, e.g., during one of the planned refresh courses, and asking them to put again in practice what they had learnt and remember from their previous experience.
+Acknowledgements  The authors want to thank Fabio Gavinelli and Carla Capello for their contribution to the development of the VR scenario. They also want to acknowledge the support provided by the Forest Firefighting Units of the Piedmont Region, in particular by Sergio Pirone and Paolo Maritano, in the design and validation phases.
+Author contributions  FDL and FL contributed to conceptualization and methodology; DC and FDL contributed to software design and curation; DC, AC contributed to formal analysis and investigation; DC, FDL, AC, and FL involved in writing; FL contributed to funding acquisition, supervision and project responsibility.
+Funding  Open access funding provided by Politecnico di Torino within the CRUI-CARE Agreement. This work was supported by Interreg V-A Francia-Italia ALCOTRA 2014-2020 PITEM RISK ACT (4980) project.
+Data availability  Not applicable.
+Code availability  Code will be made available as open source.
+Declarations 
+Conflict of interest  The authors have no competing interests to declare that are relevant to the contents of this article. The funder had no role in the design of the study; in the collection, analyses, or interpretation
+
+1 3
+
+Virtual Reality
+
+of data; in the writing of the manuscript, or in the decision to publish the results.
+Ethical approval  Ethical review and approval were not requested for this study by the Authors’ institution.
+Consent to participate  Informed consent was obtained from all the participants involved in the study.
+Consent for publication  Not applicable.
+Open Access  This article is licensed under a Creative Commons Attribution 4.0 International License, which permits use, sharing, adaptation, distribution and reproduction in any medium or format, as long as you give appropriate credit to the original author(s) and the source, provide a link to the Creative Commons licence, and indicate if changes were made. The images or other third party material in this article are included in the article's Creative Commons licence, unless indicated otherwise in a credit line to the material. If material is not included in the article's Creative Commons licence and your intended use is not permitted by statutory regulation or exceeds the permitted use, you will need to obtain permission directly from the copyright holder. To view a copy of this licence, visit http://​creat​iveco​mmons.​org/​licen​ses/​by/4.​0/.
+References
+Aaron B, Philip K, James M (2009) Determining what individual SUS scores mean: adding an adjective rating scale. J Usability Stud 4(3):114–123
+Andrade M, Souto Maior C, Silva E, Moura M, Lins I (2018) Serious games & human reliability. The use of game-engine-based simulator data for studies of evacuation under toxic cloud scenario. In: Proc. of Probabilistic Safety Assessment and Management Conference (PSAM 14), 1–12
+Backlund P, Engstrom H, Hammar C, Johannesson M, Lebram M (2007) Sidh - a game based firefighter training simulation. In: Proc. of 2007 11th International Conference Information Visualization (IV ’07), 899–907. https://​doi.​org/​10.​1109/​IV.​2007.​100
+Bliss JP, Tidwell PD, Guest MA (1997) The effectiveness of virtual reality for administering spatial navigation training to firefighters. Presence Teleop Virtual Environ 6(1):73–86. https://​doi.​org/​10.​ 1162/​pres.​1997.6.​1.​73
+Brooke J (1996) SUS: s ‘quick and dirty’ usability scale. Usability Eval Ind. https://​doi.​org/​10.​1201/​97814​98710​411-​35
+Buttussi F, Chittaro L (2021) A comparison of procedural safety training in three conditions: virtual reality headset, smartphone, and printed materials. IEEE Trans Learn Technol 14(1):1–15. https://​ doi.​org/​10.​1109/​TLT.​2020.​30337​66
+Çakiroğlu Ü, Gökoğlu S (2019) Development of fire safety behavioral skills via virtual reality. Comput Educ 133:56–68. https://​doi.​org/​ 10.​1016/j.​compe​du.​2019.​01.​014
+Calandra D, Pratticò FG, Cannavò A, Micelli L, Lamberti F (2019) Building reconfigurable passive haptic interfaces on demand using off-the-shelf construction bricks. In: Proceedngs of 2019 IEEE Conference on Virtual Reality and 3D User Interfaces (VR), 1403–1404. https://​doi.​org/​10.​1109/​VR.​2019.​87978​65
+Calandra D, Pratticò FG, Migliorini M, Verda V, Lamberti F (2021) A multi-role, multi-user, multi-technology virtual reality-based road tunnel fire simulator for training purposes. In: Proceedings of 16th International Conference on Computer Graphics Theory and Applications (GRAPP 2021), 96–105. https://​doi.​org/​10.​ 5220/​00103​19400​960105
+
+Cannavò A, Calandra D, Pratticò FG, Gatteschi V, Lamberti F (2021) An evaluation testbed for locomotion in virtual reality. IEEE Trans Vis Comput Gr 27(3):1871–1889. https://d​ oi.o​ rg/1​ 0.1​ 109/T​ VCG.​ 2020.​30324​40
+Cha M, Han S, Lee J, Choi B (2012) A virtual reality based fire training simulator integrated with fire dynamics data. Fire Saf J 50:12–24. https://​doi.​org/​10.​1016/j.​fires​af.​2012.​01.​004
+Checa D, Bustillo A (2020) A review of immersive virtual reality serious games to enhance learning and training. Multimed Tools Appl 79(9):5501–5527. https://​doi.​org/​10.​1007/​s11042-​019-​08348-9
+Chittaro L, Buttussi F, Zangrando N (2014) Desktop virtual reality for emergency preparedness: user evaluation of an aircraft ditching experience under different fear arousal conditions. In: Proceedings of 20th ACM Symposium on Virtual Reality Software and Technology (VRST ’14). VRST ’14, 141–150. Association for Computing Machinery, New York, NY, USA. https://​doi.​org/​10.​ 1145/​26710​15.​26710​25
+Corelli F, Battegazzorre E, Strada F, Bottino A, Cimellaro GP (2020) Assessing the usability of different virtual reality systems for firefighter training. In: Proc. 15th International Joint Conference on Computer Vision, Imaging and Computer Graphics Theory and Applications, 146–153. https://​doi.​org/​10.​5220/​00089​62401​ 460153
+de Carvalho PVR, Righi AW, Huber GJ, de Lemos FC, Jatoba A, Gomes JO (2018) Reflections on work as done (WAD) and work as imagined (WAI) in an emergency response organization: a study on firefighters training exercises. Appl Ergon 68:28–41. https://​doi.​org/​10.​1016/j.​apergo.​2017.​10.​016
+De Lorenzis F, Pratticò Lamberti F (2022) Work-in-Progress—Blower VR: A virtual reality experience to support the training of forest firefighter. In: Proceedings of 8th International Conference of the Immersive Learning Research Network (iLRN2022), vol. (in press), 1–3
+Engelbrecht H, Lindeman RW, Hoermann S (2019) A SWOT analysis of the field of virtual reality for firefighter training. Front Robot AI 6:101. https://​doi.​org/​10.​3389/​frobt.​2019.​00101
+Fathima SJS, Aroma J (2019) Simulation of fire safety training environment using immersive virtual reality. Int J Recent Technol Eng 7:347–350
+Feng Z, González VA, Amor R, Lovreglio R, Cabrera-Guerrero G (2018) Immersive virtual reality serious games for evacuation training and research: a systematic literature review. Comput Educ 127:252–266. https://​doi.​org/​10.​1016/j.​compe​du.​2018.​09.​002
+Gwynne SMV, Kuligowski ED, Boyce KE, Nilsson D, Robbins A, Lovreglio R, Thomas J, Roy-Poirier A (2019) Enhancing egress drills: preparation and assessment of evacuee performance. Fire Mater 43(6):613–631. https://​doi.​org/​10.​1002/​fam.​2448
+Haskins J, Zhu B, Gainer S, Huse W, Eadara S, Boyd B, Laird C, Farantatos J, Jerald J (2020) Exploring VR training for first responders. In: Proc. of 2020 IEEE Conference on Virtual Reality and 3D User Interfaces Abstracts and Workshops (VRW), 57–62. https://​ doi.​org/​10.​1109/​VRW50​115.​2020.​00018
+Hassenzahl M, Koller F, Burmester M (2008) Der user experience (UX) auf der spur: Zum einsatz von www.attrakdiff.de. In: Brau H, Diefenbach S, Hassenzahl M, Koller F, Peissner M, Röse K (eds.) Tagungsband UP08, 78–82. Fraunhofer Verlag, Stuttgart (2008)
+Jensen L, Konradsen F (2018) A review of the use of virtual reality head-mounted displays in education and training. Educ Inf Technol 23(4):1515–1529. https://d​ oi.o​ rg/1​ 0.1​ 007/s​ 10639-0​ 17-9​ 676-0
+Jost P, Cobb S, Hämmerle I (2020) Reality-based interaction affecting mental workload in virtual reality mental arithmetic training. Behav Inf Technol 39(10):1062–1078. https://​doi.​org/​10.​1080/​ 01449​29X.​2019.​16412​28
+Joyce RD, Robinson S (2017) Passive haptics to enhance virtual reality simulations. In: Proc. of AIAA Modeling and Simulation
+
+1 3
+
+Virtual Reality
+
+Technologies Conference, 1–10. Chap. 1. https://​doi.​org/​10.​ 2514/6.​2017-​1313 Kalawsky RS (1999) VRUSE—A computerised diagnostic tool: for usability evaluation of virtual/synthetic environment systems. Appl Ergon 30(1):11–25. https://d​ oi.o​ rg/1​ 0.1​ 016/S​ 0003-6​ 870(98)​ 00047-7 Keller J (2010) Tools to support motivational design. In: Motivational Design for Learning and Performance: The ARCS Model Approach, 282–286. Chap. 11. https://​doi.​org/​10.​1007/​ 978-1-​4419-​1250-3 Lamberti F, De Lorenzis F, Pratticò FG, Migliorini M (2021) An immersive virtual reality platform for training CBRN operators. In: Proceedings of 2021 IEEE 45th Annual Computers, Software, and Applications Conference (COMPSAC), 133–137. https://​doi.​ org/​10.​1109/​COMPS​AC517​74.​2021.​00030 Louka MN, Balducelli C (2001) Virtual reality tools for emergency operation support and training. In: Proceedins of International Conference on Emergency Management Towards Co-operation and Global Harmonization, pp 1–10 Lovreglio R, Duan X, Rahouti A, Phipps R, Nilsson D (2021) Comparing the effectiveness of fire extinguisher virtual reality and video training. Virtual Real 25(1):133–145. https://​doi.​org/​10.​1007/​ s10055-​020-​00447-5 Lukosch H, Lukosch S, Hoermann S, Lindeman RW (2019) Conceptualizing fidelity for HCI in applied gaming. In: Fang X (ed) HCI in Games. Springer, Cham, pp 165–179 Lu X, Yang Z, Xu Z, Xiong C (2020) Scenario simulation of indoor post-earthquake fire rescue based on building information model and virtual reality. In: Toledo Santos E, Scheer S (eds.) Proceedings of 18th International Conference on Computing in Civil and Building Engineering, 1217–1226. https://d​ oi.o​ rg/1​ 0.1​ 016/j.a​ dven​ gsoft.​2020.​102792 Morélot S, Garrigou A, Dedieu J, N’Kaoua B (2021) Virtual reality for fire safety training: Influence of immersion and sense of presence on conceptual and procedural acquisition. Comput Educ 166:104145. https://​doi.​org/​10.​1016/j.​compe​du.​2021.​104145 Nahavandi S, Wei L, Mullins J, Fielding M, Deshpande S, Watson M, Korany S, Nahavandi D, Hettiarachchi I, Najdovski Z, Jones R, Mullins A, Carter A (2019) Haptically-enabled VR-based immersive fire fighting training simulator. In: Arai K, Bhatia R, Kapoor S (eds.) Intelligent Computing, 11–21. Springer, Cham. https://​ doi.​org/​10.​1007/​978-3-​030-​22871-2_2 Pedram S, Palmisano S, Skarbez R, Perez P, Farrelly M (2020) Investigating the process of mine rescuers’ safety training with immersive virtual reality: a structural equation modelling approach. Comput Educ 153:103891. https://​doi.​org/​10.​1016/j.​compe​du.​ 2020.​103891
+
+Pellas N, Dengel A, Christopoulos A (2020) A scoping review of immersive virtual reality in STEM education. IEEE Trans Learn Technol 13(4):748–761. https://​doi.​org/​10.​1109/​TLT.​2020.​30194​ 05
+Pratticò FG, De Lorenzis F, Calandra D, Cannavò A, Lamberti F (2021) Exploring simulation-based virtual reality as a mock-up tool to support the design of first responders training. Appl Sci 11(16):1– 13. https://​doi.​org/​10.​3390/​app11​167527
+Querrec R, Buche C, Maffre E, Chevaillier P (2003) SécuRéVi: Virtual environments for fire fighting training. In: Proceedings of the 5th Virtual Reality International Conference, pp 169–175
+Rose FD, Attree EA, Brooks BM, Parslow DM, Penn PR (2000) Training in virtual environments: transfer to real world tasks and equivalence to real task training. Ergonomics 43(4):494–511. https://​ doi.​org/​10.​1080/​00140​13001​84378 (PMID: 10801083)
+Rothermel RC (1972) A mathematical model for predicting fire spread in wildland fuels. USDA Forest Service
+Seo S-W, Kwon S, Hassan W, Talhan A, Jeon S (2019) Interactive virtual-reality fire extinguisher with haptic feedback. In: Proc. of 25th ACM Symposium on Virtual Reality Software and Technology. VRST ’19. Association for Computing Machinery, New York, NY, USA. https://​doi.​org/​10.​1145/​33599​96.​33647​25
+St Julien TU, Shaw CD (2003) Firefighter command training virtual environment. In: Proceedings of Conference on Diversity in Computing, 30–33. https://​doi.​org/​10.​1145/​948542.​948549
+Strada F, Bottino A, Lamberti F, Mormando G, Ingrassia PL (2019) Holo-BLSD - A holographic tool for self-training and selfevaluation of emergency response skills. IEEE Transactions on Emerging Topics in Computing, 1–1. https://​doi.​org/​10.​1109/​ TETC.​2019.​29257​77
+Suhail M, Gainer S, Haskins J, Boyd B, Laird C, Huse W, Eadara S, Jerald J (2019) Simulating a futuristic fire pump panel in virtual reality. In: Proc. of 2019 IEEE Conference on Virtual Reality and 3D User Interfaces (VR), 1415–1416. https://d​ oi.o​ rg/1​ 0.1​ 109/V​ R.​ 2019.​87982​80
+Tate DL, Sibert L, King T (1997) Using virtual environments to train firefighters. IEEE Comput Graphics Appl 17(6):23–29. https://​ doi.​org/​10.​1109/​38.​626965
+Wheeler SG, Engelbrecht H, Hoermann S (2021) Human factors research in immersive virtual reality firefighter training: a systematic review. Front Virtual Real. https://​doi.​org/​10.​3389/​frvir.​ 2021.​671664
+Publisher's Note Springer Nature remains neutral with regard to jurisdictional claims in published maps and institutional affiliations.
+
+1 3
+

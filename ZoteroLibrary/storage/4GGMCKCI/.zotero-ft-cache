@@ -1,0 +1,305 @@
+See discussions, stats, and author profiles for this publication at: https://www.researchgate.net/publication/356033546
+A Deep Learning Model to Smart Education System
+Conference Paper · November 2021
+
+CITATIONS
+0
+2 authors, including:
+Palanivel Kuppusamy Pondicherry University 53 PUBLICATIONS 191 CITATIONS
+SEE PROFILE
+
+READS
+355
+
+Some of the authors of this publication are also working on these related projects: Smart Education View project Create new project "SOA" View project
+
+All content following this page was uploaded by Palanivel Kuppusamy on 09 November 2021.
+The user has requested enhancement of the downloaded file.
+
+A Deep Learning Model to Smart Education
+System
+Palanivel Kuppusamy, Suresh Joseph K Computer Centre Pondicherry University Puducherry, INDIA
+ksjoseph.csc@pondiuni.edu.in
+
+Abstract—Deep learning methods enable software applications to develop intelligence to adapt and improve on their own as per the situation. It opens a wide range of possibilities in smart education, especially in customizing course content for each student's preferences. Learning management systems provide quantitative data in the form of reports and learning data. The teachers can refer to these data for analyzing and improving the course content and delivery. They can collect qualitative feedback in the form of surveys and discussions through cloud-based learning management systems. In the existing system, the teachers have to manually process these data to identify patterns and improve the course material. It is a time-intensive activity and hence, challenging to carry out frequently. Integrating deep learning with learning management systems can result in intelligent course material and high accuracy without any manual intervention. This paper reviews factors that influence deep learning in education, and hence this article aims to achieve deep learning on a large scale in the innovative education system with a deep learning model to prediction. The proposed architecture can reduce the development and maintenance costs of systems, reduce risks, and facilitate communication between different stakeholders. Keywords— Educational technology, machine learning, deep learning, smart education, smart learning, learning analytics.
+I. INTRODUCTION
+Educational technology has evolved drastically over the years. With the advent of e-Learning and learning management systems (LMSs), learning has gone beyond the classroom's traditional model [4]. Now teachers can reach a more comprehensive through online courses. Students can access these courses from any place at any time. Nowadays, e-Learning is a complete and selfsustainable medium for imparting knowledge.
+Many emerging digital technologies have played a role in advancing education [10]. Some of them are artificial intelligence (AI), machine learning (ML), and deep learning (DL). These technologies are the successive revolutions in computing and hinge on recognizing patterns based on past data and predicting future outcomes [25]. Machines utilizing AI principles are often referred to as intelligent devices because most do not learn independently. They are beneficial to data scientists and analysts tasked with collecting, analyzing, and interpreting large amounts of data. They make these processes faster and automatically.
+A. Challenges
+Modern technology makes educational technology (EdTech) within reach of many advanced educational systems. Most of today's educational tools do not adjust to different cultures, languages, individual learner needs, etc. Predicting the dropouts, improving teacher-training quality, and making personalized education a reality are challenges [29] in the present education system. Some of the challenges are listed below:
+
+a) Personal privacy. Parents or guardians are not comfortable sharing data on their children without a strong understanding of why it is needed.
+b) Partiality. Educators and teachers must remain cognizant of bias. If the data on which the existing system is trained is geared toward a specific demographic, the output will be biased.
+c) Massive data. Educational institutions are increasingly collecting massive amounts of data to inform the education process, and data storage becomes a significant concern.
+The above challenges make greater use of technologies in the education system. EdTech needs to provide a clear value proposition to families and operate with complete transparency. It can help overcome bias in the classroom. An efficient approach is required to process a massive amount of educational data and predict the output.
+B. Motivation
+In the education system, the stakeholders are students, teachers, staff members, educators, parents, recruiters, other educational institutions, etc. The entities are library, entry-exit gates, canteens, auditoriums, laboratories, hostels, medical, classrooms, gymnasiums, etc. The educational premises may be embedded with the Internet of Things (IoT) or sensorenabled devices. These devices can sense, capture the data in the learning environment, and send it to further educational processing applications. The data produced by these sensors/devices can be massive and unstructured, and they travel from source to destination and vice versa using a wired and wireless medium.
+Educational institutions can use these data for processing for various purposes, including analytics and prediction. Recently DL techniques have been used to perform better analytics and predictions on a massive volume of data. DL leverages an artificial neural network (ANN) to build a model used to make predictions with speed, scale, and judgment that exceed human capabilities. DL is more effective than traditional ML approaches because of its larger scale training set, smaller model, and more effective detections.
+This article aims to introduce DL methods in education and propose a DL model for intelligent education. The proposed DL model can predict better educational outcomes, improve teachers' training quality, and make personalized education a reality. The key contributions of this research article are listed as follows:
+• It discusses and reviews the DL methods to the
+intelligent education system.
+
+EC-AI ML 2020
+• It presents the proposed DL method for the
+intelligent education system.
+• It presents the challenges and future directions
+of intelligent education using DL.
+With the above model, faculty and educators might use the new data sources as guides for course redesign, implementing new assessments, students' behaviours, students' dropouts, and communication lines between teachers and students.
+II. BACKGROUND
+The use of technology across the world has become typical in the educational sector. AI, ML, and DL technologies are now commonly used in education. Hence, this section introduces the concepts of ML, DL, and the intelligent education system.
+A. Machine Learning (ML)
+ML refers to the collective field of all the algorithms and processes deployed to develop AI in machines [10]. These algorithms enable the machine or program to 'learn' from a set of data and use this learning to solve other tasks and problems. ML trains a machine to learn from a broad set of input data and develop an indigenous algorithm of its own to identify patterns and trends.
+ML application provides systems with the ability to learn and improve from experience without being explicitly programmed automatically [15]. The learning process begins with observations or data to look for patterns in data and make better decisions in the future based on the examples it provides. By using algorithms, the machines can receive data, analyze it, and then produce an output that is within an acceptable range. Fig. 1 shows the process of how ML determines the results.
+
+ML algorithms have made normal operations more accessible in the education sector, faster, and more efficient than manual operations [9]. The adoption of ML has enhanced crowd-sourced tutoring and work more efficient and more accessible. ML algorithms are bound to produce the advantages of customized and personalized learning, analytics of content, grading, students' progress, etc. [28]. ML helps to identify each student’s specific needs, automatic grading, and assist teachers in teaching to students. The education sector may consider the recommender system [32] as the most utilized modern times system.
+B. Deep Learning (DL) DL method is based on learning and improving by
+examining learning algorithms. While ML uses simple concepts, DL works with ANNs to imitate how humans think and learn. The traditional approach that detects fraud or money laundering might rely on the amount of transaction that ensues, while a DL is likely to point to fraudulent activity [30]. DL approach maps inputs to outputs and finds correlations. It can learn to approximate an unknown function f(x) = y, where 'x' is any input, and 'y' is any output, related at all, and a neural network finds the right 'f.'
+Some examples of DL methods are classification, clustering, and regression [21]. DL performs object classification using training from scratch, transfer learning, and feature extraction ways. Fig. 2 shows the process of how deep learning determines the results.
+Fig. 2. How DL determines results.
+
+Fig. 1 How ML determines the Results.
+ML algorithms are generally categorized as supervised, unsupervised, and reinforcement. Supervised algorithms can apply what has been learned in the past to new data using labeled examples to predict future events. Unsupervised algorithms are used when the information used to train is neither classified nor labeled. It explores the data and can draw inferences from datasets to describe hidden structures from unlabeled data. Semi-supervised algorithms fall somewhere between supervised and unsupervised learning since they use both labeled and unlabeled data for training. Reinforcement ML algorithms interact with their environment by producing actions and discovers errors or rewards.
+The standard ML algorithms are decision trees (DT), support vector machines (SVM), Bayesian algorithms, k-nearest neighbor (KNN), random forest (RF), association rule (AR) algorithms, ensemble learning, kmeans clustering, and principal component analysis (PCA).
+
+DL methods are a groundbreaking tool for processing large quantities of data since the machine's performance improves as it analyzes more data [36]. DL has brought about an explosion of data in all forms from sources like social media, internet search engines, e-commerce platforms, and among others. This enormous amount of data (or Big data) is readily accessible and shared through decision-making applications [33].
+DL approach has many layers. They are input, hidden, and output layers [22]. The input layer processes a raw data input and passes it on to the next layer as output. The hidden layer processes the input layer's information by including additional information and passes on its result. The output layer takes the hidden layer's information and makes the machine's pattern even better. It continues across all levels of the neuron network. These details are shown in Fig. 3.
+Fig. 3. Deep Learning Model
+
+78
+
+Architectures. DL networks are constructed for supervised learning (discriminative), unsupervised learning (generative learning), and the combination (hybrid) DL [20]. Convolutional neural networks (CNNs) and recurrent neural networks (RNNs) are examples of discriminative DL methods. Deep Autoencoders (AEs), deep belief networks (DBN), restricted Boltzmann machines (RBMs), generative adversarial networks (GANs), and an ensemble of DL networks (EDLNs) are examples of hybrid DL methods.
+Applications. DL is used across all industries, including Commercial apps (i.e., image recognition), consumer recommendation apps, and medical research tools. Some of the DL applications [31] are automated driving, aerospace and defense, medical devices, industrial automation, etc. DL's practical uses are natural language processing (NLP), automatic speech recognition, and computer vision [35]. Modern DL techniques have led to improvements in translation and language modeling (Google Translate).
+Challenges. The challenges of DL are continuous input data, transparency, and resource-demanding technology [16]. Despite all its challenges, DL discovers new, improved unstructured Big Data analytics [34] methods for those to use it.
+ML vs. DL. ML uses algorithms to analyze and interpret data and, based on the learnings, make the best possible decisions. DL structures the algorithms into multiple layers to create an ANN. The critical differences are data dependencies, hardware dependencies, feature extraction, and problem-solving [6]. ML needs fewer data to train the algorithm than DL. DL requires an extensive and diverse set of data to identify the underlying structure. Besides, ML provides a faster-trained model. Most advanced DL architecture can take days to a week to train. The advantage of DL over ML is that it is highly accurate.
+C. Smart Education
+Smart education offers a paradigm shift in the way students access education. It uses state-of-the-art technology and helps both learners and teachers prepare themselves for tomorrow [12]. It can be done in a virtual or physical environment. It could also be a blended version of both. Smart education can also be summarized as intelligent devices to augment the learning outcome of traditional education. Using advanced learning methods such as online virtual classrooms, virtual learning environments, cloud computing, smartphones, etc., a teacher can help students learn more. Innovative learning aims to provide holistic learning to students using modern technology to fully prepare them for a fast-changing world. Teachers need to adapt to modern skills and apply them in their traditional classrooms using technology [19].
+Smart Learning Environment (SLE). The SLE focuses on the online learning environment and promotes successful learning to the learners automatically. SLE requires the implementation of personalized learning [27]. The main components of SLE are learner classification and intervention feedback. The primary objective is to understand the different learners with different types of information to classify the learner, i.e., context-aware computing. In SLE, all
+
+A Deep Learning Model to Smart Education System
+dynamic changes are observed, interpreted, and responded appropriately.
+Smart Learning Analytics (SLA). Educational data mining (EDM) and learning analytics (LA) [5] aims to improve educational experiences by helping stakeholders to make better decisions using data. SLA considers interaction analysis as a promising way to understand the learner's behavior. SLA [23] is the measurement, collection, analysis, and reporting of data about learners and their contexts to understand and optimize learning and the environments in which it occurs.
+Smart Education Model. Smart education solution [17] is designed based on the technologies available to meet stakeholders' requirements. Smart education has an education cloud platform [26] that includes an innovative campus, e-resources, intelligent devices, social communications, and system integration services. Smart education is equipped with intelligent information, interactive boards, SLE, intelligent devices, LMS, apps, data centers, dashboards, communication & collaboration, etc. The smart education model [14] allows collaboration among students, teachers, parents, administrators, and staff smartly. This model allows innovative approaches, methods, strategies, etc., to improve educational processes, useful for smart learning systems.
+DL in Education. A classroom has a teacher to teach a designated subject [13]. The main issue with Online learning is the lack of such a guide. DL assists EdTech and refers to learners' engagement in critical and creative thinking, making inferences, and transferring knowledge. Modern technologies provide the platform for DL in an educational setting more effectively [13]. DL methods provide a computational architecture that combines several processing levels (layers) to learn data representations with several abstraction levels, as shown in Fig.4.
+Fig. 4. DL architecture to educational data
+Compared with traditional ML methods, DL methods have considerably enhanced state-of-the-art applications. DL illustrated how others might be pursued similar curriculum design improvements adapted for their contexts [8].
+Learning Analytics using DL. Data Mining has emerged in the wake of higher education's ability to capture an increasing volume of data [3]. Academic analytics combines select educational institutional data, statistical analysis, and predictive modeling to create intelligence upon which teachers, students, and educators can change academic behavior. DL methods can create content analytics to dynamically restructure and optimize the content modules as per the students' needs [18]. It tracks students' learning and suggests measures for further improvements. DL methods enhance the thinking capabilities, cognitive ability, and
+
+79
+
+EC-AI ML 2020
+retention among the students, thus making them thrive in academics.
+III. METHODOLOGY
+The proposed work is focused on conceptualizations, models, and architectures. The conceptual model needs to be tested in the information technology domain before validating data models and reference implementations. To produce an adequate conceptual model, work must first specify the conceptual domain by identifying wellformed constructs. Academic research typically proceeds from specifying a well-formed research question.
+Thus, for this research paper, the research question is: What learning model creates an intelligence upon which teachers, students, and educators that can change academic behavior? The critical journals identified above have selected few papers for analysis based on the above questions. The following section discusses related works to highlight the survey on DL and smart education.
+A literature review was presented using a broad array of data about students and courses collected by institutions and learning analytics to improve student's success and retention [3]. Academic analytics measure, collect, decipher, report, effectively share data, and identify student strengths and weaknesses [2]. A personalized e-learning model that associates DL with process mining [1] provided the learners with learning resources that fit their individual preferences after giving an overview of both e-learning as an online educational system. Big data and AI could help universities understand student backgrounds more precisely, according to which corresponding interventions could be provided [29].
+A smart education model [11] has a four-tier framework of innovative pedagogies and a smart learning environment's critical features. Sustainability offers the possibility of appropriate and responsive education to the new systemic conditions of uncertainty and complexity reflected in the headlines every day [24]. In the DL system, the data volumes involved are often huge, and a lot of computing power is required to drive the learning process. Fortunately, technologies and approaches developed in Big Data and HighPerformance Computing (HPC) can be brought together to meet the need [7].
+IV. DL MODEL TO SMART EDUCATION
+The smart education system model uses the concept of DL, which can gauge the degree of learning, retention, and achievements of the learners and suggests improvements and corrective measures. This section discusses the proposed smart education system using DL methods.
+A. Proposed Smart Education
+In the smart education model, the educational system premises' entities are embedded with sensors, actuators, and transponders using wearable and fixed devices. The stakeholders are students, teachers, staff, recruiters, parents, etc. The sensors in these entities sense and capture the information about themselves and their
+
+surrounding environment and send it to the base station (or sink) for further processing. These sensors produce a vast amount of data, travelling from source to destination and vice versa using a wired or wireless medium.Fig.5 presents an overview of the architecture of the proposed model. It uses a deep neural network (DNN) architecture loosely inspired by the structure of biological brains.
+The architecture component is a key-value store for DL model metadata. Investing in high-performance, scalable compute and storage enables the architecture to grow with educational organizations' needs. Therefore, the proposed model should be able to scale automatically to avoid increases in latency. The proposed model supports comprehensive model validation. The DL model integrates security measures and governance processes into each layer. It can help mitigate the risk of breaches in data, learning and classification modules, and output.
+Fig.5. Proposed DL model to smart education analytics
+To ensure optimal use of bandwidth and faster data transfer, educational institutions can incorporate the concept of software-defined networking (SDN). DL techniques have been used to perform better analysis and predictions using the data received from these sensors.
+B. Requirements DL algorithms can learn from historical patterns and
+recognize them in future transactions. DL algorithms appear more effective than humans do when it comes to the speed of information processing. Some of the requirements to build a DL model for smart education analytics are accuracy, efficiency, scalability, and speed.
+Smart education analytics using DL starts with gathering and segmenting the data. Then the DL model is fed with training sets to predict the probability of anomaly.
+• Extract Data. The data will be split into three different segments – training, testing, and cross-validation to ensure consistency in results.
+• Provide Training sets. It predicts the value of some output given some input values.
+• Building Model. IT determines how to make that prediction based on previous examples of input and output data.
+C. Mapping to DL Process Designing a DL architecture model must consider
+each step of the DL process in Higher Educational
+
+80
+
+Institutions (HEIs). It must be flexible to adapt to new data sources, handle workloads, and crunch through massive data. It also needs to consider overarching architecture components that provide security and governance. This architecture is often best to start as the number of DL use cases multiply. Fig. 6 shows the comprehensive DL architecture to HEIs.
+Data Ingestion. The data ingestion tools must support a wide variety of heterogeneous data sources. It can support both batch and stream processing with a welldesigned data pipeline.
+Data Processing. For the variety of data sources, it requires data transformation, normalization, and cleansing preprocessing techniques.
+Feature Engineering & Data Modeling. Features turn the inputs into something the algorithms can understand. is might involve simplifying the data, filtering it, or creating new features. Feature selection can be either done manually or automated.
+Fig. 6. A comprehensive DL architecture model.
+Model Fitting. A DL model is a combination of the algorithm and the training data. Examples of DL algorithms include random forest, least squares, and logistic regression. It can also support the user's DL algorithms to suit the user's needs.
+Model Training. The training process uses a training dataset to "educate" the model with the training dataset and the algorithm. It predicts the trained model's output on the training dataset's inputs with the training dataset's actual output values.
+Model Validation. Validation is the process of using a testing dataset to evaluate a trained model. The validation techniques are - predictive modeling, training error, test error, and cross-validation.
+Deployment. The execution must be powerful enough to support repeated cycles of experimentation, testing, and tuning. It is considered the given different data, and hence the exact model may behave quite differently.
+Monitoring. The monitoring function can help with model-optimization efforts.
+An effective DL solution requires scalability and elasticity, and significant compute power, adequate and low-latency storage.
+Features. The DL algorithms primarily use classification tasks that involve decision trees, rule induction, neural networks, and statistical inference. Some of the features identified are generating alerts from data, student groups with similar characteristics, student misuse, lurking, student outcomes, student dropouts, students' low motivation, students' mental health at work, etc.
+Dataset. This DL model uses student's behavior data collected from extracted classes, gates, Wi-Fi usage, library, etc. These data included student background
+
+A Deep Learning Model to Smart Education System
+information – gender, status, performance interaction, study status, etc.
+Work Flow. Every entity and stakeholder are in the smart education model is embedded with multiple sensors, capturing the information about itself and its surroundings. Each of these sensors transfers this information for further processing. The data processing module converts the captured data (unstructured) into a standard format (structured) for processing. There are several steps followed in standardizing the raw data captured by the sensors. They are data source, data size and type, data standards, data cleaning, and data restructuring.
+After completing the above steps, the sensors' raw data is converted into a standard format, identifiable and accessible by the DL system.
+D. Proposed Deep Learning Model In smart education, the learning data can be collected
+and sent to the server automatically. It eliminates the need for any human intervention with the help of sensors. Due to this sensor system, the tedious task of teachers and educators can be minimized. It allows them to concentrate more on teaching and learning, which the primary function of learning is. The teachers and educators can use these collected learning data for analytical purposes. A multilayer perceptron algorithm was employed to establish an efficient and convenient prediction model. The model's accuracy increased as the quantity of data, the number of training cycles, and the model's complexity increased. This algorithm was employed for model training first. The proposed deep learning model consists of input, hidden, and output layers, as shown in Fig. 7.
+Fig.7. Proposed DL model to smart education analytics
+The input layer consists of educational messages, and training is performed with the DL algorithms. All educational data types are taken as input, such as sensor data, library, hostel, wireless, health, security, teaching & learning, and much more. Data integration is performed by collecting all data at one location. After the data collection, the next step is to store the input data into the storage system. After storage, the corresponding tool engine performs the processing of the data.
+The hidden layer acts as a memory that stores the internal state of the educational data. When the new data arrived, the memory is updated, and decisions are made according to the current and previous input. Then DL techniques are executed, and patterns are identified as output. The obtained output is stored in the storage system. After that, the output is visualized in the form of a graphical user interface (GUI), dashboard, decisionmaking applications, etc.
+
+81
+
+EC-AI ML 2020
+The input layer comprised neurons of the features, and the output layer produced results with one label. The proportions of validation and training data were set at lower and higher. Each training epoch contained samples with many epochs used. Every training session was recorded to derive variations in accuracy and loss. In DL, the loss is the value that a neural network tries to minimize. According to the result, the validation data accuracy increased gradually with the number of training sessions being performed; the loss decreased gradually, after which the optimal model was established. Test data were then substituted into the multilayer perceptron model to obtain the predicted probability of results (example, dropout). Using significant variables identified through the analysis as input determined the critical factors fed to the deep neural network to predict learning failure; moreover, prediction performance could be increased.
+With this prediction, a platform can be established to help students with substandard academic performance. The teachers and educators should be notified of the students for whom this applies without attaching labels and providing appropriate assistance in their learning process.
+Governance. The governance layer processes the track data lineage. It maps the existing data flow and develops standard data taxonomies across the HEIs. It plans for metadata collection, integration, usage, and repository maintenance. Data governance reveals source to destination and the various processes and rules involved, and how the data is used.
+Security. Along with data lineage, data security is paramount to a DL architecture. Data security includes authentication, authorization, and encryption. It must apply authentication and access controls across the entire framework, from ingestion to report delivery. Also, data security measures must be auditable. It encrypts both data at rest and data in transit.
+E. Advantages
+The above model may be applied in other educational activities, including automatic educational processing, teachers' speech recognition, language translation, social network filtering, students & employee image analysis, material inspection, and game programs, where they have produced results comparable to and in some cases surpassing human expert performance. Some of the proposed model's advantages are attendance management, health, hygiene, automated library management, power consumption management, security & safety management, smart teaching and learning activities, etc.
+The students and teachers can keep track of their attendance and thus reduces the manual paperwork. With the sensors embedded in the wearable device, staff members can monitor their vitals and notify them if any abnormal variation (activity) is observed. All the books, journals, thesis, manuscripts, etc., in the intelligent library are equipped with sensors. It reduces the manual entry at the book-issuing counter of the library and thus saves time and cost. The sensors embedded in smart classrooms can help make a conducive teaching-learning environment by maintaining the desired temperature and humidity favorable for teaching and learning activities.
+
+The sensors installed in the classrooms, staff rooms, laboratories, library, gymnasium, etc., can monitor and adjust to the atmospheric conditions. They can control the electrical appliances as per the preferences of the institutional users. The sensors embedded at entry and exit gates, classrooms, laboratories, gymnasiums, auditoriums, washrooms, etc., can let the door be opened/ closed only by legitimate personnel. Thus, it prevents any security breaches and trespassing.
+Educational apps can transform how teaching and learning are done. Educators and administrators are transitioning to student-centered, collaborative environments that appeal to tech-savvy, visual learners. Apart from smart learning analytics, the proposed DL architecture can be used in behavioral systems, content analytics, language translations, healthcare, security, speech recognition, etc.
+F. Issues and Challenges
+Some of the challenges of the proposed DL model can be among the below mentioned. The availability of data is one of the biggest challenges faced by educational organizations. The cost of the infrastructure can be a significant overhead in small educational institutes. The data captured by sensors are primarily in different formats. The sensors embedded in the SLE capture instantaneous information generated at a fast rate. It needs proper storage for the data analysis purpose. The enormous volumes of data produced by the devices can be a big issue. The data produced by the devices are in different types and sizes. The system should be robust and capable enough to handle heterogeneous data types. The mining of relevant data is one of the primary prerequisites for constructing a helpful classification and prediction model. The interconnection of many devices in a network and a large volume of data transactions may lead to network latencies and failures. The students never want themselves to be monitored, citing personal privacy and other similar factors. Security remains the primary concern when handling a large amount of data. It should be addressed effectively in good system architecture.
+V. CONCLUSION AND FUTURE ENHANCEMENTS
+Educational information is highly available, as well as secured and managed consistently for privacy and liability concerns. Technologies empower administrators and educators, and they have extended the reach of student access to quality education. Interconnection of modern education with environmental, social, and economic issues, and the importance of interdisciplinary thinking and holistic insight, deep learning is particularly relevant in higher education for sustainability.
+Smart learning and deep learning algorithms are used to create an intelligent educational environment. The deep learning model can predict results achieved acceptable accuracy, sensitivity, and specificity in deep learning models. Predictive analytics with deep learning helps the faculty and the parents to get alert and respond appropriately. The presented architecture may facilitate concrete architecture design of use cases in smart learning environments. Students can be helped in a better way and can be worked on their weak subjects. In
+
+82
+
+areas where transparency is paramount, it could be challenging to make a case for the hidden logic of deep learning. Future work may be focused on this issue.
+
+References [1] Abdessamad Chanaa, Nour-eddine El Faddouli, (2018). Deep
+learning for a smart e-learning system, ICSDE'18, Morocco. https://doi.org/10.1145/3289100.3289132.
+
+[2] Baepler, Paul Murdoch, Cynthia James, (2010) "Academic Analytics and Data Mining in Higher Education," International Journal for the Scholarship of Teaching and Learning: 4(2):17.
+
+[3] Bin Mat U, Buniyamin N, Arsad P. M., Kassim R., (2013). "An overview of using academic analytics to predict and improve students' achievement: A proposed proactive intelligent intervention" IEEE 5th Conference on Engineering Education (ICEED), 126-130, DOI: 10.1109/ICEED.2013.6908316.
+
+[4] Brown, David G. (2000). "The Jury Is In!" In Teaching with Technology, ed. David G. Brown. Bolton, MA: Anker. https://education.stateuniversity.com/pages/2496/Technologyin-Education-Higher-Education.html#ixzz6aUgA8Jjd
+
+[5] Calvet Liñán, L., & Juan Pérez, Á. A., (2015). Educational Data
+
+Mining and Learning Analytics: differences, similarities, and
+
+time evolution. RUSC. Universities and Knowledge Society
+
+Journal,
+
+12(3).
+
+pp.
+
+98-112.
+
+DOI:
+
+http://dx.doi.org/10.7238/rusc.v12i3.2515
+
+[6] Faizan Shaikh, (2017) Deep Learning vs. Machine Learning – the essential differences you need to know! https://www.analyticsvidhya.com/
+
+[7] Fujitsu, (2018). Laying the foundations for Enterprise AI An architectural approach to deep learning platforms Freeform Dynamics, Executive Insight paper.
+
+[8] Glen Hornby, Gayle Jennings, Duncan Nulty, (2009). Facilitating deep learning in an information systems course through application of curriculum design principles curriculum design principles to facilitate deep learning, Journal of teaching in travel & tourism, 9:124–141. Doi: 10.1080/15313220903116956.
+
+[9] Ibtehal Talal Nafea, (2018). Machine Learning in Educational Technology, Machine Learning - Advanced Techniques and Emerging Applications, Hamed Farhadi, IntechOpen, DOI: 10.5772/intechopen.72906.
+
+[10] Kamy Anderson, (2018). A Primer on Machine Learning and Deep Learning for Educators.
+
+[11] Lee R.S.T., (2020). Smart Education. In: Artificial Intelligence in Daily Life. Springer, Singapore. http://doi-org443.webvpn.fjmu.edu.cn/10.1007/978-981-15-7695-9_11.
+
+[12] Life Learners, (2017). Effects of Smart Class Technology in
+
+Education,
+
+Life
+
+Learners
+
+Academy.
+
+https://lifelearners.ng/effects-of-smart-class-technology-in-
+
+education/
+
+[13] Linda Darling-Hammond, Lisa Flook, et al. (2020). Implications for the educational practice of the science of learning and development, Applied Developmental Science, 24:2, 97-140, DOI: 10.1080/10888691.2018.1537791.
+
+[14] Lubov S. Lisitsyna, Marina S. Senchilo, Evgenii A. Efimchik, (2020). Series: Smart Innovation, Systems and Technologies, 188:171. DOI: 10.1007/978-981-15-5584-8_15.
+
+[15] MonkeyLearn, (2020). https://monkeylearn.com/machinelearning/
+
+[16] Najafabadi, M.M., Villanustre, F., et al. (2015). Deep learning applications and challenges in big data analytics. Journal of Big Data 2, 1. https://doi.org/10.1186/s40537-014-0007-7.
+
+[17] Palanivel K, (2020). Emerging Technologies to Smart Education. I J of Computer Trends and Technology (IJCTT), 68(2):5-15.
+
+A Deep Learning Model to Smart Education System
+
+[18] Palanivel K, Suresh Joseph K, (2021), Building an Enterprise Lake for Educational Organizations for Prediction Analytics using Deep Learning, International Conference on Deep Learning, Computing and Intelligence (ICDCI 2021), India.
+
+[19] Price, J.K. (2015). Transforming learning for the smart learning
+
+environment: lessons learned from the Intel education
+
+initiatives. Smart
+
+Learn.
+
+Environ. 2, 16.
+
+https://doi.org/10.1186/s40561-015-0022-y.
+
+[20] Schmidhuber, Juergen, (2014). Deep Learning in Neural Networks: An Overview. Neural Networks. 61. 10.1016/j.neunet.2014.09.003.
+
+[21] Schmidt, J., Marques, M.R.G., Botti, S. et al. (2019). Recent
+
+advances and applications of machine learning in solid-state
+
+materials
+
+science. NPJ
+
+Comput.
+
+Mater 5(83).
+
+https://doi.org/10.1038/s41524-019-0221-0.
+
+[22] Shrestha A, Mahmood A., (2019). "Review of Deep Learning Algorithms and Architectures," in IEEE Access, vol. 7, pp. 53040-53065, 2019, DOI: 10.1109/ACCESS.2019.2912200.
+
+[23] Siemens G., Baker, R.S.J, 2012. Learning Analytics and Educational Data Mining: Towards Communication and Collaboration. Conf. on Learning Analytics and Knowledge, 252- 254.
+
+[24] Stephen Sterling, (2008). Sustainable education – towards a deep learning response to unsustainability, Education for Sustainable Development, spring 2008.
+
+[25] Taylor Lam, Frank Li, Charlotte Lu, Roger Chung, (2019). Global development of AI-based education, Deloitte Asia Pacific Limited, China.
+
+[26] Temdee P. (2014). Ubiquitous learning environment: Smart learning platform with multi-agent architecture. Wireless Personal Communications, 76(3):627-641.
+
+[27] Tore Hoel, Jon Mason, 2018. Standards for smart education – towards a development framework, Smart Learning Environments (2018), 5:3. https://doi.org/10.1186/s40561-0180052-3.
+
+[28] Trueinteraction, (2020). https://www.trueinteraction.com/
+
+[29] Tsai et al., (2020). Precision education with statistical learning and deep learning: a case study in Taiwan. International Journal of educational technology in higher education, 17:12. https://doi.org/10.1186/s41239-020-00186-2.
+
+[30] Vaibhav Kumar, (2020). Deep Learning Model for Bank Crisis Prediction.
+
+[31] Vamathevan, J., Clark, D., Czodrowski, P., et al. (2019). Applications of machine learning in drug discovery and development. Nature reviews. Drug discovery, 18(6), 463–477. https://doi.org/10.1038/s41573-019-0024-5
+
+[32] Verbert K, Manouselis N, Ochoa X, et al. (2012). Context-aware recommender systems for learning: A survey and future challenges. IEEE Transactions on Learning Technologies. 5(4):318-335.
+
+[33] Vishal
+
+Jadhav,
+
+(2020).
+
+Deep
+
+Learning.
+
+https://www.penpenny.com/vishal-jadhav/Deep-Learning
+
+[34] Watson, H. J. (2019). Update Tutorial: Big Data Analytics: Concepts, Technology, and Applications. Communications of the Association for Information Systems, 44:21. https://doi.org/10.17705/1CAIS.04421.
+
+[35] Young, Tom Hazarika, Devamanyu Poria, Soujanya Cambria, Erik. (2018). Recent Trends in Deep Learning Based Natural Language Processing [Review Article]. IEEE Computational Intelligence Magazine. 13. 55-75. 10.1109/MCI.2018.2840738.
+
+[36] Zhao Z., Zheng, S P. Xu, Wu, X. (2019). "Object Detection with Deep Learning: A Review," in IEEE Transactions on Neural Networks and Learning Systems, 30(11):3212-3232. DoI: 10.1109/TNNLS.2018.2876865.
+
+83
+
+EC-AI ML 2020
+
+View publication stats
+
+84
+
